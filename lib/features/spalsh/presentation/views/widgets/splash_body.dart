@@ -1,11 +1,8 @@
-
+import 'package:e_commerce_clot/core/utils/assets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class SplashBody extends StatelessWidget {
-  const SplashBody({
-    super.key,
-  });
+  const SplashBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +17,7 @@ class SplashBody extends StatelessWidget {
             child: Transform.scale(scale: value, child: child),
           );
         },
-        child: Image.asset("assets/images/Logo_1.png"),
+        child: Image.asset(Assets.imagesLogo1),
       ),
     );
   }

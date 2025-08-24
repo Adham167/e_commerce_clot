@@ -1,3 +1,4 @@
+import 'package:e_commerce_clot/core/utils/app_colors.dart';
 import 'package:e_commerce_clot/core/utils/app_router.dart';
 import 'package:e_commerce_clot/features/spalsh/presentation/manager/splash_cubit/splash_cubit.dart';
 import 'package:e_commerce_clot/features/spalsh/presentation/views/widgets/splash_body.dart';
@@ -11,13 +12,14 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.primary,
       body: BlocListener<SplashCubit, SplashState>(
         listener: (context, state) {
           if (state is UnAuthenticated) {
-            GoRouter.of(context).push(AppRouter.KLoginView);
+            GoRouter.of(context).pushReplacement  (AppRouter.KLoginView);
           }
         },
-        child:SplashBody(),
+        child: SplashBody(),
       ),
     );
   }

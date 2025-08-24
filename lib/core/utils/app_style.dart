@@ -26,4 +26,14 @@ class AppStyle {
     fontSize: 24,
     fontWeight: FontWeight.w600,
   );
+  static const styleRegular12 = TextStyle(
+    color: Colors.white,
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+  );
+  static const styleRegularBold12 = TextStyle(
+    color: Colors.white,
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+  );
 }
