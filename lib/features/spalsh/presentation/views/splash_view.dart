@@ -1,8 +1,9 @@
+import 'package:e_commerce_clot/core/utils/app_router.dart';
 import 'package:e_commerce_clot/features/spalsh/presentation/manager/splash_cubit/splash_cubit.dart';
-import 'package:e_commerce_clot/features/spalsh/presentation/views/login_view.dart';
+import 'package:e_commerce_clot/features/spalsh/presentation/views/widgets/splash_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
@@ -13,19 +14,10 @@ class SplashView extends StatelessWidget {
       body: BlocListener<SplashCubit, SplashState>(
         listener: (context, state) {
           if (state is UnAuthenticated) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => LoginView()),
-            );
+            GoRouter.of(context).push(AppRouter.KLoginView);
           }
         },
-        child: Center(
-          child: SvgPicture.asset(
-            "assets/images/Rectangle13.svg",
-            width: 200,
-            height: 200,
-          ),
-        ),
+        child:SplashBody(),
       ),
     );
   }

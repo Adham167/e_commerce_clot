@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class Splash_body extends StatelessWidget {
-  const Splash_body({
+class SplashBody extends StatelessWidget {
+  const SplashBody({
     super.key,
   });
 
@@ -20,7 +20,7 @@ class Splash_body extends StatelessWidget {
             child: Transform.scale(scale: value, child: child),
           );
         },
-        child: SvgPicture.asset("assets/images/Logo1.svg"),
+        child: Image.asset("assets/images/Logo_1.png"),
       ),
     );
   }
