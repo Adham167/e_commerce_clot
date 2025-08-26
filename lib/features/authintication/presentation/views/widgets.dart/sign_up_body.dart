@@ -24,7 +24,7 @@ class SignUpBody extends StatelessWidget {
           SizedBox(height: 16),
           CustomTextfield(text: "Email Address"),
           SizedBox(height: 16),
-          CustomTextfield(text: "Password"),
+          CustomTextfield(text: "Password"), 
           SizedBox(height: 32),
           CustomButton(onPressed: () {}, title: "Continue"),
           SizedBox(height: 32),

@@ -1,0 +1,40 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dartz/dartz.dart';
+import 'package:e_commerce_clot/features/authintication/data/models/user_model.dart';
+import 'package:e_commerce_clot/features/authintication/data/source/auth_firebase_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+class AuthFirebaseServiceImpl extends AuthFirebaseService {
+  @override
+  Future<Either> signup(UserModel user) async {
+    try {
+      var returnedData = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+            email: user.eamil,
+            password: user.password,
+          );
+
+      FirebaseFirestore.instance
+          .collection("Users")
+          .doc(returnedData.user!.uid)
+          .set({
+            'firstname': user.firstName,
+            'lastname': user.lastName,
+            'email': user.eamil,
+            'password': user.password,
+
+            'gender': user.gender,
+            'age': user.age,
+          });
+      return Right("successful");
+    } on FirebaseAuthException catch (e) {
+      String message = " ";
+      if (e.code == 'weak-password') {
+        message = 'The password provided is too weak.';
+      } else if (e.code == 'email-already-in-use') {
+        message = 'The account already exists for that email.';
+      }
+      return Left(message);
+    }
+  }
+}
