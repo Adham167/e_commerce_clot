@@ -3,4 +3,5 @@ import 'package:e_commerce_clot/features/authintication/data/models/user_model.d
 
 abstract class UserAuthRepo {
   Future<Either> signup(UserModel user);
+  Future<Either> getAges();
 }

@@ -6,7 +6,7 @@ part 'age_range_state.dart';
 class AgeRangeCubit extends Cubit<String> {
   AgeRangeCubit() : super("Age Range");
 
-  String selectedAge = " ";
+  String selectedAge = "";
 
   void selectAge(String age) {
     selectedAge = age;

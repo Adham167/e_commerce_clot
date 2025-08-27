@@ -6,7 +6,12 @@ import 'package:e_commerce_clot/features/authintication/domain/repo/auth_firebas
 
 class UserAuthRepoImpl extends UserAuthRepo {
   @override
-  Future<Either> signup(UserModel user) {
-    return getIt<AuthFirebaseService>().signup(user);
+  Future<Either> signup(UserModel user) async {
+    return await getIt<AuthFirebaseService>().signup(user);
+  }
+
+  @override
+  Future<Either> getAges() async {
+    return await getIt<AuthFirebaseService>().getAges();
   }
 }

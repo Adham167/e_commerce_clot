@@ -1,3 +1,4 @@
+import 'package:e_commerce_clot/core/di/service_locator.dart';
 import 'package:e_commerce_clot/core/utils/app_router.dart';
 import 'package:e_commerce_clot/core/utils/app_theme.dart';
 import 'package:e_commerce_clot/features/spalsh/presentation/manager/splash_cubit/splash_cubit.dart';
@@ -11,6 +12,7 @@ void main()async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await ServiceLocator();
   runApp(const ECommerceClot());
 }
 

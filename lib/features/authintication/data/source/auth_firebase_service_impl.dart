@@ -26,7 +26,7 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
             'gender': user.gender,
             'age': user.age,
           });
-      return Right("successful");
+      return const Right("successful");
     } on FirebaseAuthException catch (e) {
       String message = " ";
       if (e.code == 'weak-password') {
@@ -35,6 +35,17 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
         message = 'The account already exists for that email.';
       }
       return Left(message);
+    }
+  }
+
+  @override
+  Future<Either> getAges() async {
+    try {
+      var returnedData =
+          await FirebaseFirestore.instance.collection("Ages").get();
+      return Right(returnedData.docs);
+    } on Exception catch (e) {
+      return const Left("Please try again");
     }
   }
 }
