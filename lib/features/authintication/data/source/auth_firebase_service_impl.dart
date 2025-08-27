@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_clot/features/authintication/data/models/user_model.dart';
-import 'package:e_commerce_clot/features/authintication/data/source/auth_firebase_service.dart';
+import 'package:e_commerce_clot/features/authintication/domain/repo/auth_firebase_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthFirebaseServiceImpl extends AuthFirebaseService {
