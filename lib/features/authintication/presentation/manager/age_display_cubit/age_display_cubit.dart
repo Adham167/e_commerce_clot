@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_clot/core/di/service_locator.dart';
@@ -13,7 +11,6 @@ class AgeDisplayCubit extends Cubit<AgeDisplayState> {
 
   void displayAges() async {
     var returnedData = await getIt<GetAgesUsecase>().call();
-    log("hello");
     returnedData.fold(
       (message) {
         emit(AgeDisplayFailure(message: message));

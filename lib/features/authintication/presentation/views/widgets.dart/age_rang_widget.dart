@@ -1,7 +1,7 @@
 import 'package:e_commerce_clot/core/utils/app_bottom_sheet.dart';
 import 'package:e_commerce_clot/core/utils/app_colors.dart';
 import 'package:e_commerce_clot/features/authintication/presentation/manager/age_range_cubit/age_range_cubit.dart';
-import 'package:e_commerce_clot/features/authintication/presentation/manager/cubit/age_display_cubit.dart';
+import 'package:e_commerce_clot/features/authintication/presentation/manager/age_display_cubit/age_display_cubit.dart';
 import 'package:e_commerce_clot/features/authintication/presentation/views/widgets.dart/ages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
