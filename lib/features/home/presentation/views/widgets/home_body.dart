@@ -1,3 +1,4 @@
+import 'package:e_commerce_clot/features/home/presentation/views/widgets/home_header.dart';
 import 'package:flutter/material.dart';
 
 class HomeBody extends StatelessWidget {
@@ -5,6 +6,10 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Column(
+      children: [
+        HomeHeader()
+      ],
+    );
   }
 }

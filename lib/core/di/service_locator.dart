@@ -3,6 +3,7 @@ import 'package:e_commerce_clot/features/authintication/data/repo/user_auth_repo
 import 'package:e_commerce_clot/features/authintication/domain/repo/auth_firebase_service.dart';
 import 'package:e_commerce_clot/features/authintication/data/source/auth_firebase_service_impl.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/get_ages_usecase.dart';
+import 'package:e_commerce_clot/features/authintication/domain/usecases/get_user_usecase.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/is_logged_in_usecase.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/send_password_reset_email_usecase.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/signin_usecase.dart';
@@ -25,5 +26,6 @@ Future<void> ServiceLocator() async {
     getIt.registerSingleton<GetAgesUsecase>(GetAgesUsecase());
     getIt.registerSingleton<SendPasswordResetEmailUsecase>(SendPasswordResetEmailUsecase());
     getIt.registerSingleton<IsLoggedInUsecase>(IsLoggedInUsecase());
+    getIt.registerSingleton<GetUserUsecase>(GetUserUsecase());
 
 }

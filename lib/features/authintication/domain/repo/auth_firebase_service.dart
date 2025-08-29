@@ -7,5 +7,6 @@ abstract class AuthFirebaseService {
   Future<Either> signin(UserSigninModel user);
     Future<Either> sendPasswordResetEmail(String email);
   Future<Either> getAges();
+  Future<Either> getUser();
   Future<bool> isLoggedin();
 }
