@@ -4,7 +4,6 @@ import 'package:e_commerce_clot/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_clot/core/utils/widgets/custom_text_field.dart';
 import 'package:e_commerce_clot/features/authintication/data/models/user_model.dart';
 import 'package:e_commerce_clot/features/authintication/presentation/views/widgets.dart/custom_text.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

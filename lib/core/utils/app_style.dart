@@ -26,7 +26,7 @@ class AppStyle {
     fontSize: 24,
     fontFamily: "CircularStd",
 
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
   );
   static const styleBold24 = TextStyle(
     color: Colors.white,

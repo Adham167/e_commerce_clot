@@ -1,3 +1,4 @@
+import 'package:e_commerce_clot/core/utils/app_router.dart';
 import 'package:e_commerce_clot/core/utils/app_style.dart';
 import 'package:e_commerce_clot/features/authintication/data/models/user_model.dart';
 import 'package:e_commerce_clot/features/authintication/presentation/manager/age_range_cubit/age_range_cubit.dart';
@@ -9,6 +10,7 @@ import 'package:e_commerce_clot/features/authintication/presentation/views/widge
 import 'package:e_commerce_clot/features/authintication/presentation/views/widgets.dart/gender_buttons_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class GenderAndAgeBody extends StatelessWidget {
   const GenderAndAgeBody({super.key, required this.userModel});
@@ -28,6 +30,8 @@ class GenderAndAgeBody extends StatelessWidget {
             ScaffoldMessenger.of(
               context,
             ).showSnackBar(SnackBar(content: Text(state.errMessage)));
+          } else if (state is ButtonSuccess) {
+            GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
           }
         },
         child: Column(

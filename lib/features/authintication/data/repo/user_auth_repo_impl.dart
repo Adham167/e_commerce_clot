@@ -21,4 +21,15 @@ class UserAuthRepoImpl extends UserAuthRepo {
        return await getIt<AuthFirebaseService>().signin(user);
 
   }
+  
+  @override
+  Future<Either> sendPasswordResetEmail(String email) async{
+    return await getIt<AuthFirebaseService>().sendPasswordResetEmail(email);
+  }
+  
+  @override
+  Future<bool> isLoggedIn() async{
+        return await getIt<AuthFirebaseService>().isLoggedin();
+
+  }
 }

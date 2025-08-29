@@ -30,9 +30,7 @@ class LoginBody extends StatelessWidget {
                   context,
                 ).showSnackBar(SnackBar(content: Text(state.errMessage)));
               } else if (state is ButtonSuccess) {
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(const SnackBar(content: Text("Success")));
+                GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
               }
             },
             child: Column(

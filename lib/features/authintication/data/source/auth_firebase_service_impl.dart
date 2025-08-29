@@ -51,15 +51,13 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
   }
 
   @override
-  Future<Either> signin(UserSigninModel user) async{
+  Future<Either> signin(UserSigninModel user) async {
     try {
-       await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-            email: user.email,
-            password: user.password,
-          );
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: user.email,
+        password: user.password,
+      );
 
-      
       return const Right("successful");
     } on FirebaseAuthException catch (e) {
       String message = " ";
@@ -72,4 +70,23 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
     }
   }
 
+  @override
+  Future<Either> sendPasswordResetEmail(String email) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      return const Right('Password reset email is sent');
+    } catch (e) {
+      return const Left('Please try again');
+    }
+  }
+
+  
+  @override
+  Future<bool> isLoggedin() async {
+    if (FirebaseAuth.instance.currentUser != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
