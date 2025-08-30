@@ -21,5 +21,9 @@ class Assets {
   /// Assets for imagesProfile1
   /// assets/images/profile_1.png
   static const String imagesProfile1 = "assets/images/profile_1.png";
+
+  /// Assets for imagesSearchIcon
+  /// assets/images/Search_icon.png
+  static const String imagesSearchIcon = "assets/images/Search_icon.png";
 }
 

@@ -9,7 +9,7 @@ class SplashBody extends StatelessWidget {
     return Center(
       child: TweenAnimationBuilder(
         tween: Tween(begin: 0.0, end: 1.0),
-        duration: Duration(seconds: 2),
+        duration: const Duration(seconds: 2),
         curve: Curves.easeInOut,
         builder: (context, value, child) {
           return Opacity(

@@ -45,7 +45,7 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
       var returnedData =
           await FirebaseFirestore.instance.collection("Ages").get();
       return Right(returnedData.docs);
-    } on Exception catch (e) {
+    } on Exception {
       return const Left("Please try again");
     }
   }

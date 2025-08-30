@@ -21,7 +21,7 @@ class SplashView extends StatelessWidget {
             GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
           }
         },
-        child: SplashBody(),
+        child: const SplashBody(),
       ),
     );
   }

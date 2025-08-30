@@ -10,7 +10,7 @@ class GenderButtonsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<GenderCubit, int>(
       builder: (context, state) {
-        return Row(
+        return const Row(
           children: [
             GenderTile(index: 1, gender: "Men"),
             SizedBox(width: 20),
