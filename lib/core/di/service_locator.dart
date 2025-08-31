@@ -13,6 +13,12 @@ import 'package:e_commerce_clot/features/category/data/source/category_firebase_
 import 'package:e_commerce_clot/features/category/domain/repo/category_firebase_service.dart';
 import 'package:e_commerce_clot/features/category/domain/repo/category_repo.dart';
 import 'package:e_commerce_clot/features/category/domain/usecases/get_categories_usecase.dart';
+import 'package:e_commerce_clot/features/product/data/repo/product_repo_impl.dart';
+import 'package:e_commerce_clot/features/product/data/source/product_firebase_service_impl.dart';
+import 'package:e_commerce_clot/features/product/domain/repo/product_firebase_service.dart';
+import 'package:e_commerce_clot/features/product/domain/repo/product_repo.dart';
+import 'package:e_commerce_clot/features/product/domain/usecases/get_new_in_usecase.dart';
+import 'package:e_commerce_clot/features/product/domain/usecases/get_top_selling_usecase.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -22,10 +28,12 @@ Future<void> ServiceLocator() async {
 
   getIt.registerSingleton<AuthFirebaseService>(AuthFirebaseServiceImpl());
   getIt.registerSingleton<CategoryFirebaseService>(CategoryFirebaseServiceImpl());
+  getIt.registerSingleton<ProductFirebaseService>(ProductFirebaseServiceImpl());
 
   //repositories
   getIt.registerSingleton<UserAuthRepo>(UserAuthRepoImpl());
   getIt.registerSingleton<CategoryRepo>(CategoryRepoImpl());
+  getIt.registerSingleton<ProductRepo>(ProductRepoImpl());
   //usecases
 
     getIt.registerSingleton<SignupUsecase>(SignupUsecase());
@@ -35,5 +43,7 @@ Future<void> ServiceLocator() async {
     getIt.registerSingleton<IsLoggedInUsecase>(IsLoggedInUsecase());
     getIt.registerSingleton<GetUserUsecase>(GetUserUsecase());
     getIt.registerSingleton<GetCategoriesUsecase>(GetCategoriesUsecase());
+    getIt.registerSingleton<GetTopSellingUsecase>(GetTopSellingUsecase());
+    getIt.registerSingleton<GetNewInUsecase>(GetNewInUsecase());
 
 }

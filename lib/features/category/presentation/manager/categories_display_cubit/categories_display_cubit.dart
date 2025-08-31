@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce_clot/core/di/service_locator.dart';
 import 'package:e_commerce_clot/features/category/domain/entities/category_entity.dart';
