@@ -16,18 +16,55 @@ class ProductFirebaseServiceImpl implements ProductFirebaseService {
       return const Left("Please try again");
     }
   }
-  
+
   @override
-  Future<Either> getNewIn() async{
+  Future<Either> getNewIn() async {
     try {
       var returnedData =
           await FirebaseFirestore.instance
               .collection("Products")
-              .where("createdDate", isGreaterThanOrEqualTo: Timestamp.fromDate(DateTime(2024,7,16)))
+              .where(
+                "createdDate",
+                isGreaterThanOrEqualTo: Timestamp.fromDate(
+                  DateTime(2024, 7, 16),
+                ),
+              )
               .get();
       return Right(returnedData.docs.map((e) => e.data()).toList());
     } catch (e) {
       return const Left("Please try again");
     }
   }
+
+  @override
+  Future<Either> getProductsByCategoryId(String categoryId) async {
+    try {
+      var returnedData =
+          await FirebaseFirestore.instance
+              .collection("Products")
+              .where("categoryId", isEqualTo: categoryId)
+              .get();
+      return Right(returnedData.docs.map((e) => e.data()).toList());
+    } catch (e) {
+      return const Left("Please try again");
+    }
+  }
+
+  @override
+  Future<Either> getProductsByTitle(String title) async {
+  try {
+    var returnedData = await FirebaseFirestore.instance
+        .collection("Products")
+        .orderBy("title_lowercase")
+        .startAt([title.toLowerCase()])
+        .endAt(['${title.toLowerCase()}\uf8ff'])
+        .get();
+
+    return Right(returnedData.docs.map((e) => e.data()).toList());
+  } catch (e) {
+    return const Left("Please try again");
+  }
+}
+
+  
 }

@@ -12,12 +12,12 @@ class AllCategoriesBody extends StatelessWidget {
     return BlocProvider(
       create: (context) => CategoriesDisplayCubit()..displayCategories(),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Shopping By Categories", style: AppStyle.styleBold24),
-            SizedBox(height: 16),
+            const Text("Shopping By Categories", style: AppStyle.styleBold24),
+            const SizedBox(height: 16),
             BlocBuilder<CategoriesDisplayCubit, CategoriesDisplayState>(
               builder: (context, state) {
                 if (state is CategoriesDisplayLoading) {

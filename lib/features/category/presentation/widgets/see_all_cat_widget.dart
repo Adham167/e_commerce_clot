@@ -9,7 +9,7 @@ class SeeAllCatWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
       child: Row(
         children: [
           const Text("Categories", style: AppStyle.styleBold12),
@@ -17,7 +17,7 @@ class SeeAllCatWidget extends StatelessWidget {
           GestureDetector(
             onTap:
                 () => GoRouter.of(context).push(AppRouter.kAllCategoriesView),
-            child: Text("See All", style: AppStyle.styleBold16),
+            child: const Text("See All", style: AppStyle.styleBold16),
           ),
         ],
       ),

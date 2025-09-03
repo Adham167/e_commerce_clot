@@ -18,6 +18,8 @@ import 'package:e_commerce_clot/features/product/data/source/product_firebase_se
 import 'package:e_commerce_clot/features/product/domain/repo/product_firebase_service.dart';
 import 'package:e_commerce_clot/features/product/domain/repo/product_repo.dart';
 import 'package:e_commerce_clot/features/product/domain/usecases/get_new_in_usecase.dart';
+import 'package:e_commerce_clot/features/product/domain/usecases/get_products_by_category_id.dart';
+import 'package:e_commerce_clot/features/product/domain/usecases/get_products_by_title.dart';
 import 'package:e_commerce_clot/features/product/domain/usecases/get_top_selling_usecase.dart';
 import 'package:get_it/get_it.dart';
 
@@ -45,5 +47,7 @@ Future<void> ServiceLocator() async {
     getIt.registerSingleton<GetCategoriesUsecase>(GetCategoriesUsecase());
     getIt.registerSingleton<GetTopSellingUsecase>(GetTopSellingUsecase());
     getIt.registerSingleton<GetNewInUsecase>(GetNewInUsecase());
+    getIt.registerSingleton<GetProductsByCategoryIdUsecase>(GetProductsByCategoryIdUsecase());
+    getIt.registerSingleton<GetProductsByTitleUsecase>(GetProductsByTitleUsecase());
 
 }

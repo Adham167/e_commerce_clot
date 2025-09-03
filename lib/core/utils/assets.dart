@@ -18,6 +18,10 @@ class Assets {
   /// assets/images/message_icon.png
   static const String imagesMessageIcon = "assets/images/message_icon.png";
 
+  /// Assets for imagesNotFoundSearch
+  /// assets/images/not_found_search.png
+  static const String imagesNotFoundSearch = "assets/images/not_found_search.png";
+
   /// Assets for imagesProfile1
   /// assets/images/profile_1.png
   static const String imagesProfile1 = "assets/images/profile_1.png";

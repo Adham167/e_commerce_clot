@@ -4,6 +4,7 @@ part of 'product_display_cubit.dart';
 sealed class ProductDisplayState {}
 
 final class ProductDisplayLoading extends ProductDisplayState {}
+final class ProductDisplayInitial extends ProductDisplayState {}
 
 final class ProductDisplayLoaded extends ProductDisplayState {
   final List<ProductEntity> productEntity;

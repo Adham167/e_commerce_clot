@@ -9,9 +9,11 @@ class AllCategoriesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.separated(
-        itemBuilder: (context, index) => AllCategoriesItem(categoryEntity: categoryList[index],),
+        itemBuilder:
+            (context, index) =>
+                AllCategoriesItem(categoryEntity: categoryList[index]),
         separatorBuilder: (context, index) => const SizedBox(),
-        itemCount: 5,
+        itemCount: categoryList.length,
       ),
     );
   }
