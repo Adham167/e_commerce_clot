@@ -1,5 +1,5 @@
 import 'package:e_commerce_clot/features/product/domain/entities/product_entity.dart';
-import 'package:e_commerce_clot/features/product/presentation/widgets/product_listview_item.dart';
+import 'package:e_commerce_clot/core/utils/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
 class CategoryProductsGridView extends StatelessWidget {
@@ -17,7 +17,7 @@ class CategoryProductsGridView extends StatelessWidget {
           childAspectRatio: 0.6,
         ),
         itemBuilder: (context, index) {
-          return ProductListviewItem(productEntity: productList[index]);
+          return ProductCard(productEntity: productList[index]);
         },
       ),
     );

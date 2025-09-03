@@ -1,5 +1,5 @@
 import 'package:e_commerce_clot/features/product/domain/entities/product_entity.dart';
-import 'package:e_commerce_clot/features/product/presentation/widgets/product_listview_item.dart';
+import 'package:e_commerce_clot/core/utils/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
 class ProductListview extends StatelessWidget {
@@ -13,8 +13,7 @@ class ProductListview extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         itemBuilder:
-            (context, index) =>
-                ProductListviewItem(productEntity: productList[index]),
+            (context, index) => ProductCard(productEntity: productList[index]),
         separatorBuilder: (context, index) => const SizedBox(width: 10),
         itemCount: productList.length,
       ),

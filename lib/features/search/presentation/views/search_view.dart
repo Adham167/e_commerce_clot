@@ -3,7 +3,7 @@ import 'package:e_commerce_clot/core/utils/widgets/custom_app_bar.dart';
 import 'package:e_commerce_clot/core/utils/widgets/not_found_widget.dart';
 import 'package:e_commerce_clot/features/product/domain/usecases/get_products_by_title.dart';
 import 'package:e_commerce_clot/features/product/presentation/manager/product_display_cubit/product_display_cubit.dart';
-import 'package:e_commerce_clot/features/product/presentation/widgets/category_products_grid_view.dart';
+import 'package:e_commerce_clot/features/product/presentation/views/category_products_grid_view.dart';
 import 'package:e_commerce_clot/features/search/presentation/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
