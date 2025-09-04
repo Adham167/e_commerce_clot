@@ -1,7 +1,9 @@
 import 'package:e_commerce_clot/core/utils/app_colors.dart';
 import 'package:e_commerce_clot/core/utils/app_style.dart';
 import 'package:e_commerce_clot/features/product/domain/entities/product_entity.dart';
+import 'package:e_commerce_clot/features/product/presentation/manager/product_quantity_cubit/product_quantity_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductQuantityWidget extends StatelessWidget {
   const ProductQuantityWidget({super.key, required this.productEntity});
@@ -19,11 +21,13 @@ class ProductQuantityWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text("Size ", style: AppStyle.styleMedium16),
+          const Text("Quantity ", style: AppStyle.styleMedium16),
           Row(
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  BlocProvider.of<ProductQuantityCubit>(context).decrement();
+                },
                 icon: Container(
                   height: 40,
                   width: 40,
@@ -36,11 +40,17 @@ class ProductQuantityWidget extends StatelessWidget {
               ),
               const SizedBox(width: 10),
 
-              const Text("1", style: AppStyle.styleMedium16),
+              BlocBuilder<ProductQuantityCubit, int>(
+                builder: (context, state) {
+                  return Text(state.toString(), style: AppStyle.styleMedium16);
+                },
+              ),
 
               const SizedBox(width: 10),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  BlocProvider.of<ProductQuantityCubit>(context).increment();
+                },
                 icon: Container(
                   height: 40,
                   width: 40,
