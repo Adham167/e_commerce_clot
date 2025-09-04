@@ -13,6 +13,11 @@ import 'package:e_commerce_clot/features/category/data/source/category_firebase_
 import 'package:e_commerce_clot/features/category/domain/repo/category_firebase_service.dart';
 import 'package:e_commerce_clot/features/category/domain/repo/category_repo.dart';
 import 'package:e_commerce_clot/features/category/domain/usecases/get_categories_usecase.dart';
+import 'package:e_commerce_clot/features/order/data/repo/order_repo_impl.dart';
+import 'package:e_commerce_clot/features/order/data/source/order_firebase_service_impl.dart';
+import 'package:e_commerce_clot/features/order/domain/repo/order_firebase_service.dart';
+import 'package:e_commerce_clot/features/order/domain/repo/order_repo.dart';
+import 'package:e_commerce_clot/features/order/domain/usecases/add_to_cart_usecase.dart';
 import 'package:e_commerce_clot/features/product/data/repo/product_repo_impl.dart';
 import 'package:e_commerce_clot/features/product/data/source/product_firebase_service_impl.dart';
 import 'package:e_commerce_clot/features/product/domain/repo/product_firebase_service.dart';
@@ -31,11 +36,13 @@ Future<void> ServiceLocator() async {
   getIt.registerSingleton<AuthFirebaseService>(AuthFirebaseServiceImpl());
   getIt.registerSingleton<CategoryFirebaseService>(CategoryFirebaseServiceImpl());
   getIt.registerSingleton<ProductFirebaseService>(ProductFirebaseServiceImpl());
+  getIt.registerSingleton<OrderFirebaseService>(OrderFirebaseServiceImpl());
 
   //repositories
   getIt.registerSingleton<UserAuthRepo>(UserAuthRepoImpl());
   getIt.registerSingleton<CategoryRepo>(CategoryRepoImpl());
   getIt.registerSingleton<ProductRepo>(ProductRepoImpl());
+  getIt.registerSingleton<OrderRepo>(OrderRepoImpl());
   //usecases
 
     getIt.registerSingleton<SignupUsecase>(SignupUsecase());
@@ -49,5 +56,6 @@ Future<void> ServiceLocator() async {
     getIt.registerSingleton<GetNewInUsecase>(GetNewInUsecase());
     getIt.registerSingleton<GetProductsByCategoryIdUsecase>(GetProductsByCategoryIdUsecase());
     getIt.registerSingleton<GetProductsByTitleUsecase>(GetProductsByTitleUsecase());
+    getIt.registerSingleton<AddToCartUsecase>(AddToCartUsecase());
 
-}
+} 

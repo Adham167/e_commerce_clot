@@ -1,4 +1,5 @@
 import 'package:e_commerce_clot/core/utils/widgets/custom_app_bar.dart';
+import 'package:e_commerce_clot/features/authintication/presentation/manager/button_cubit/button_cubit.dart';
 import 'package:e_commerce_clot/features/product/domain/entities/product_entity.dart';
 import 'package:e_commerce_clot/features/product/presentation/manager/product_colors_cubit/product_colors_cubit.dart';
 import 'package:e_commerce_clot/features/product/presentation/manager/product_quantity_cubit/product_quantity_cubit.dart';
@@ -23,6 +24,9 @@ class PorductDetailsView extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ProductSizesCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ButtonCubit(),
         ),
        
       ],
