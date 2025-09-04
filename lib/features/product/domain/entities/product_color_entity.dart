@@ -1,7 +1,8 @@
+
+
 class ProductColorEntity {
   final String title;
-  final String hexcode;
+  final List<int> rgb;
 
-  ProductColorEntity({required this.title, required this.hexcode});
-
+  ProductColorEntity({required this.title, required this.rgb});
 }
