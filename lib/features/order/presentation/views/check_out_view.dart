@@ -2,7 +2,9 @@ import 'package:e_commerce_clot/core/utils/functions/cart.dart';
 import 'package:e_commerce_clot/core/utils/widgets/custom_app_bar.dart';
 import 'package:e_commerce_clot/core/utils/widgets/custom_reactive_button.dart';
 import 'package:e_commerce_clot/features/authintication/presentation/manager/button_cubit/button_cubit.dart';
+import 'package:e_commerce_clot/features/order/data/models/order_registration_model.dart';
 import 'package:e_commerce_clot/features/order/domain/entities/product_ordered_entity.dart';
+import 'package:e_commerce_clot/features/order/domain/usecases/order_registration_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -62,7 +64,18 @@ class CheckOutView extends StatelessWidget {
                           ],
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        BlocProvider.of<ButtonCubit>(context).execute(
+                          usecase: OrderRegistrationUsecase(),
+                          params: OrderRegistrationModel(
+                            products: products,
+                            createdDate: DateTime.now().toString(),
+                            itemCount: products.length,
+                            totalPrice: Cart.calculateCartSubtotal(products),
+                            shippingAddress: _addressCon.text,
+                          ),
+                        );
+                      },
                     ),
                   ],
                 );

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_clot/features/order/data/models/add_to_cart_model.dart';
+import 'package:e_commerce_clot/features/order/data/models/order_registration_model.dart';
 import 'package:e_commerce_clot/features/order/domain/repo/order_firebase_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -34,7 +35,7 @@ class OrderFirebaseServiceImpl implements OrderFirebaseService {
       for (var item in returnedData.docs) {
         var data = item.data();
         data.addAll({"id": item.id});
-        products.add(data); 
+        products.add(data);
       }
       return Right(products);
     } catch (e) {
@@ -55,6 +56,32 @@ class OrderFirebaseServiceImpl implements OrderFirebaseService {
           .delete();
 
       return const Right("Product removed successfully  ");
+    } catch (e) {
+      return const Left("Please try agian.");
+    }
+  }
+
+  @override
+  Future<Either> orderRegistration(OrderRegistrationModel order) async {
+    try {
+      var user = FirebaseAuth.instance.currentUser;
+
+      await FirebaseFirestore.instance
+          .collection("Users")
+          .doc(user!.uid)
+          .collection("Orders")
+          .add(order.toMap());
+
+      for (var item in order.products) {
+        await FirebaseFirestore.instance
+            .collection("Users")
+            .doc(user .uid)
+            .collection("Cart")
+            .doc(item.id)
+            .delete();
+      }
+
+      return const Right("Ordered Registered successfully  ");
     } catch (e) {
       return const Left("Please try agian.");
     }

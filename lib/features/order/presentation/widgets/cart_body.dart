@@ -1,4 +1,5 @@
 import 'package:e_commerce_clot/features/order/presentation/manager/cubit/cart_products_cubit.dart';
+import 'package:e_commerce_clot/features/order/presentation/widgets/cart_is_empty.dart';
 import 'package:e_commerce_clot/features/order/presentation/widgets/check_out.dart';
 import 'package:e_commerce_clot/features/order/presentation/widgets/product_ordered_listview.dart';
 import 'package:flutter/material.dart';
@@ -16,14 +17,17 @@ class CartBody extends StatelessWidget {
           if (state is CartProductsLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is CartProductsLoaded) {
-            return Stack(
-              children: [
-                ProductOrderedListview(products: state.productList),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child:  CheckOut(productList: state.productList),)
-                ],
-            );
+            return state.productList.isNotEmpty
+                ? Stack(
+                  children: [
+                    ProductOrderedListview(products: state.productList),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: CheckOut(productList: state.productList),
+                    ),
+                  ],
+                )
+                : const CartIsEmpty();
           } else if (state is CartProductsFailure) {
             return Center(child: Text(state.errMessage));
           } else {
