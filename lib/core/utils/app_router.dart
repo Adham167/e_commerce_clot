@@ -10,6 +10,7 @@ import 'package:e_commerce_clot/features/home/presentation/views/home_view.dart'
 import 'package:e_commerce_clot/features/order/domain/entities/product_ordered_entity.dart';
 import 'package:e_commerce_clot/features/order/presentation/views/cart_view.dart';
 import 'package:e_commerce_clot/features/order/presentation/views/check_out_view.dart';
+import 'package:e_commerce_clot/features/order/presentation/views/order_placed_view.dart';
 import 'package:e_commerce_clot/features/product/domain/entities/product_entity.dart';
 import 'package:e_commerce_clot/features/product/presentation/views/category_products_view.dart';
 import 'package:e_commerce_clot/features/product/presentation/views/porduct_details_view.dart';
@@ -30,12 +31,14 @@ abstract class AppRouter {
   static const kPorductDetailsView = "/PorductDetailsView";
   static const kCartView = "/CartView";
   static const kCheckOutView = "/CheckOutView";
+  static const kOrderPlacedView = "/OrderPlacedView";
 
   static final router = GoRouter(
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SplashView()),
       GoRoute(path: KLoginView, builder: (context, state) => const LoginView()),
       GoRoute(path: kCartView, builder: (context, state) => const CartView()),
+      GoRoute(path: kOrderPlacedView, builder: (context, state) => const OrderPlacedView()),
       GoRoute(
         path: kResetPasswordView,
         builder: (context, state) => const ResetPasswordView(),

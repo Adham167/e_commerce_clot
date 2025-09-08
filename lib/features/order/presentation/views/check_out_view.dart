@@ -1,3 +1,4 @@
+import 'package:e_commerce_clot/core/utils/app_router.dart';
 import 'package:e_commerce_clot/core/utils/functions/cart.dart';
 import 'package:e_commerce_clot/core/utils/widgets/custom_app_bar.dart';
 import 'package:e_commerce_clot/core/utils/widgets/custom_reactive_button.dart';
@@ -7,6 +8,7 @@ import 'package:e_commerce_clot/features/order/domain/entities/product_ordered_e
 import 'package:e_commerce_clot/features/order/domain/usecases/order_registration_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class CheckOutView extends StatelessWidget {
   final List<ProductOrderedEntity> products;
@@ -22,7 +24,9 @@ class CheckOutView extends StatelessWidget {
         create: (context) => ButtonCubit(),
         child: BlocListener<ButtonCubit, ButtonState>(
           listener: (context, state) {
-            if (state is ButtonSuccess) {}
+            if (state is ButtonSuccess) {
+              GoRouter.of(context).pushReplacement(AppRouter.kOrderPlacedView);
+            }
             if (state is ButtonFailure) {
               var snackbar = SnackBar(
                 content: Text(state.errMessage),
