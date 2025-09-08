@@ -3,5 +3,7 @@ import 'package:e_commerce_clot/features/order/data/models/add_to_cart_model.dar
 
 abstract class OrderFirebaseService {
     Future<Either> addToCart(AddToCartModel addToCartModel);
+  Future<Either> getCartProducts();
+  Future<Either> removeCartProducts(String id);
 
 }

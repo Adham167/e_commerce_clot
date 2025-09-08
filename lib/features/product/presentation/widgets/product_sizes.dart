@@ -1,7 +1,6 @@
 import 'package:e_commerce_clot/core/utils/app_colors.dart';
 import 'package:e_commerce_clot/core/utils/app_style.dart';
 import 'package:e_commerce_clot/features/product/domain/entities/product_entity.dart';
-import 'package:e_commerce_clot/features/product/presentation/manager/product_colors_cubit/product_colors_cubit.dart';
 import 'package:e_commerce_clot/features/product/presentation/manager/product_sizes_cubit/product_sizes_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -77,14 +76,14 @@ class ProductSizes extends StatelessWidget {
                               const Text("Colors", style: AppStyle.styleBold16),
                               Row(
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     height: 20,
                                     width: 20,
                                     child: Text(productEntity.sizes[index]),
                                   ),
-                                  SizedBox(width: 15),
+                                  const SizedBox(width: 15),
                                   state == index
-                                      ? Icon(Icons.check, size: 30)
+                                      ? const Icon(Icons.check, size: 30)
                                       : Container(width: 30),
                                 ],
                               ),

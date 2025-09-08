@@ -4,9 +4,9 @@ import 'package:meta/meta.dart';
 part 'product_sizes_state.dart';
 
 class ProductSizesCubit extends Cubit<int> {
-  ProductSizesCubit() : super(1);
+  ProductSizesCubit() : super(0);
 
-  int selectedIndex = 1;
+  int selectedIndex = 0;
   void itemSelection(int index) {
     selectedIndex = index;
     emit(index);

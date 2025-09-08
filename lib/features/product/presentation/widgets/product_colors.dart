@@ -89,9 +89,9 @@ class ProductColors extends StatelessWidget {
                                       shape: BoxShape.circle,
                                     ),
                                   ),
-                                  SizedBox(width: 15),
+                                  const SizedBox(width: 15),
                                   state == index
-                                      ? Icon(Icons.check, size: 30)
+                                      ? const Icon(Icons.check, size: 30)
                                       : Container(width: 30),
                                 ],
                               ),

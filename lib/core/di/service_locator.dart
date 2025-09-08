@@ -18,6 +18,8 @@ import 'package:e_commerce_clot/features/order/data/source/order_firebase_servic
 import 'package:e_commerce_clot/features/order/domain/repo/order_firebase_service.dart';
 import 'package:e_commerce_clot/features/order/domain/repo/order_repo.dart';
 import 'package:e_commerce_clot/features/order/domain/usecases/add_to_cart_usecase.dart';
+import 'package:e_commerce_clot/features/order/domain/usecases/get_cart_product_usecases.dart';
+import 'package:e_commerce_clot/features/order/domain/usecases/remove_cart_product_usecases.dart';
 import 'package:e_commerce_clot/features/product/data/repo/product_repo_impl.dart';
 import 'package:e_commerce_clot/features/product/data/source/product_firebase_service_impl.dart';
 import 'package:e_commerce_clot/features/product/domain/repo/product_firebase_service.dart';
@@ -57,5 +59,8 @@ Future<void> ServiceLocator() async {
     getIt.registerSingleton<GetProductsByCategoryIdUsecase>(GetProductsByCategoryIdUsecase());
     getIt.registerSingleton<GetProductsByTitleUsecase>(GetProductsByTitleUsecase());
     getIt.registerSingleton<AddToCartUsecase>(AddToCartUsecase());
+    getIt.registerSingleton<GetCartProductUsecases>(GetCartProductUsecases());
+    getIt.registerSingleton<RemoveCartProductUsecases>(RemoveCartProductUsecases());
 
-} 
+}
+

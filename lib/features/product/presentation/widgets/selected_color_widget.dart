@@ -33,7 +33,7 @@ class SelectedColorWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text("Size ", style: AppStyle.styleMedium16),
+            const Text("Colors ", style: AppStyle.styleMedium16),
             Row(
               children: [
                 BlocBuilder<ProductColorsCubit, int>(
@@ -54,7 +54,7 @@ class SelectedColorWidget extends StatelessWidget {
                   },
                 ),
 
-                const SizedBox(width: 12),
+                const SizedBox(width: 8),
                 const Icon(Icons.keyboard_arrow_down),
               ],
             ),
