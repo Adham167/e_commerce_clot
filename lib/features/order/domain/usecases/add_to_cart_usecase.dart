@@ -7,6 +7,6 @@ import 'package:e_commerce_clot/features/order/domain/repo/order_repo.dart';
 class AddToCartUsecase implements Usecase<Either, AddToCartModel> {
   @override
   Future<Either> call({AddToCartModel? params}) async {
-    return getIt<OrderRepo>().addToCart(params!);
+    return await getIt<OrderRepo>().addToCart(params!);
   }
 }

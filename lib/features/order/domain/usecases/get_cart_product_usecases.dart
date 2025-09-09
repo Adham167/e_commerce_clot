@@ -6,6 +6,6 @@ import 'package:e_commerce_clot/features/order/domain/repo/order_repo.dart';
 class GetCartProductUsecases implements Usecase<Either, dynamic> {
   @override
   Future<Either> call({dynamic params}) async{
-    return getIt<OrderRepo>().getCartProducts();
+    return await getIt<OrderRepo>().getCartProducts();
   }
 }

@@ -7,7 +7,7 @@ import 'package:e_commerce_clot/features/order/domain/repo/order_firebase_servic
 class OrderRegistrationUsecase
     implements Usecase<Either, OrderRegistrationModel> {
   @override
-  Future<Either> call({OrderRegistrationModel? params}) {
-    return getIt<OrderFirebaseService>().orderRegistration(params!);
+  Future<Either> call({OrderRegistrationModel? params})async {
+    return await getIt<OrderFirebaseService>().orderRegistration(params!);
   }
 }

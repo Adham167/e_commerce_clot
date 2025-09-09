@@ -6,6 +6,6 @@ import 'package:e_commerce_clot/features/order/domain/repo/order_repo.dart';
 class RemoveCartProductUsecases implements Usecase<Either, String> {
   @override
   Future<Either> call({String? params}) async{
-    return getIt<OrderRepo>().removeCartProducts(params!);
+    return await getIt<OrderRepo>().removeCartProducts(params!);
   }
 }

@@ -25,10 +25,13 @@ import 'package:e_commerce_clot/features/product/data/repo/product_repo_impl.dar
 import 'package:e_commerce_clot/features/product/data/source/product_firebase_service_impl.dart';
 import 'package:e_commerce_clot/features/product/domain/repo/product_firebase_service.dart';
 import 'package:e_commerce_clot/features/product/domain/repo/product_repo.dart';
+import 'package:e_commerce_clot/features/product/domain/usecases/add_or_remove_favorite_usecase.dart';
+import 'package:e_commerce_clot/features/product/domain/usecases/get_favorites_products_usecase.dart';
 import 'package:e_commerce_clot/features/product/domain/usecases/get_new_in_usecase.dart';
 import 'package:e_commerce_clot/features/product/domain/usecases/get_products_by_category_id.dart';
 import 'package:e_commerce_clot/features/product/domain/usecases/get_products_by_title.dart';
 import 'package:e_commerce_clot/features/product/domain/usecases/get_top_selling_usecase.dart';
+import 'package:e_commerce_clot/features/product/domain/usecases/is_favorite_usecase.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -63,6 +66,9 @@ Future<void> ServiceLocator() async {
     getIt.registerSingleton<GetCartProductUsecases>(GetCartProductUsecases());
     getIt.registerSingleton<RemoveCartProductUsecases>(RemoveCartProductUsecases());
     getIt.registerSingleton<OrderRegistrationUsecase>(OrderRegistrationUsecase());
+    getIt.registerSingleton<AddOrRemoveFavoriteUsecase>(AddOrRemoveFavoriteUsecase());
+    getIt.registerSingleton<IsFavoriteUsecase>(IsFavoriteUsecase());
+    getIt.registerSingleton<GetFavoritesProductsUsecase>(GetFavoritesProductsUsecase());
 
 }
 
