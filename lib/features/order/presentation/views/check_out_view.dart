@@ -51,13 +51,13 @@ class CheckOutView extends StatelessWidget {
                           children: [
                             Text(
                               '\$${Cart.calculateCartSubtotal(products)}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
                               ),
                             ),
-                            Text(
+                            const Text(
                               'Place Order',
                               style: TextStyle(
                                 color: Colors.white,

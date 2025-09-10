@@ -39,18 +39,21 @@ class HomeHeader extends StatelessWidget {
   }
 
   Widget _profileImage(BuildContext context, UserEntity user) {
-    return Container(
-      height: 40,
-      width: 40,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image:
-              user.image.isEmpty
-                  ? const AssetImage(Assets.imagesProfile1)
-                  : NetworkImage(user.image),
+    return GestureDetector(
+      onTap: () => GoRouter.of(context).push(AppRouter.kSettingsView),
+      child: Container(
+        height: 40,
+        width: 40,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image:
+                user.image.isEmpty
+                    ? const AssetImage(Assets.imagesProfile1)
+                    : NetworkImage(user.image),
+          ),
+          color: Colors.red,
+          shape: BoxShape.circle,
         ),
-        color: Colors.red,
-        shape: BoxShape.circle,
       ),
     );
   }

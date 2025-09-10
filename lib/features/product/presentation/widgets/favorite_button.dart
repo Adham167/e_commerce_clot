@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FavoriteButton extends StatelessWidget {
   const FavoriteButton({super.key, required this.productEntity});
-final ProductEntity productEntity;
+  final ProductEntity productEntity;
   @override
   Widget build(BuildContext context) {
     return IconButton(
@@ -21,8 +21,12 @@ final ProductEntity productEntity;
           shape: BoxShape.circle,
         ),
         child: BlocBuilder<FavoriteIconCubit, bool>(
-          builder: (context, state) => Icon( state? Icons.favorite: Icons.favorite_outlined, size: 15, color: Colors.white
-          ),
+          builder:
+              (context, state) => Icon(
+                state ? Icons.favorite : Icons.favorite_outline,
+                size: 15,
+                color: Colors.white,
+              ),
         ),
       ),
     );
