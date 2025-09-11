@@ -21,7 +21,7 @@ class MyOrdersTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'My Favorites',
+              'My Orders',
               style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
             ),
             Icon(Icons.arrow_forward_ios_rounded),

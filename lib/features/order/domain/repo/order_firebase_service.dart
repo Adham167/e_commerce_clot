@@ -7,5 +7,6 @@ abstract class OrderFirebaseService {
   Future<Either> getCartProducts();
   Future<Either> removeCartProducts(String id);
   Future<Either> orderRegistration(OrderRegistrationModel order);
+  Future<Either> getOrders();
 
 }

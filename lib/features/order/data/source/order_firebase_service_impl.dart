@@ -75,7 +75,7 @@ class OrderFirebaseServiceImpl implements OrderFirebaseService {
       for (var item in order.products) {
         await FirebaseFirestore.instance
             .collection("Users")
-            .doc(user .uid)
+            .doc(user.uid)
             .collection("Cart")
             .doc(item.id)
             .delete();
@@ -84,6 +84,22 @@ class OrderFirebaseServiceImpl implements OrderFirebaseService {
       return const Right("Ordered Registered successfully  ");
     } catch (e) {
       return const Left("Please try agian.");
+    }
+  }
+
+  @override
+  Future<Either> getOrders() async {
+    try {
+      var user = FirebaseAuth.instance.currentUser;
+      var returnedData =
+          await FirebaseFirestore.instance
+              .collection("Users")
+              .doc(user!.uid)
+              .collection("Orders")
+              .get();
+      return Right(returnedData.docs.map((e) => e.data()).toList());
+    } catch (e) {
+      return const Left("Please try again");
     }
   }
 }

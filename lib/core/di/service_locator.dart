@@ -19,6 +19,7 @@ import 'package:e_commerce_clot/features/order/domain/repo/order_firebase_servic
 import 'package:e_commerce_clot/features/order/domain/repo/order_repo.dart';
 import 'package:e_commerce_clot/features/order/domain/usecases/add_to_cart_usecase.dart';
 import 'package:e_commerce_clot/features/order/domain/usecases/get_cart_product_usecases.dart';
+import 'package:e_commerce_clot/features/order/domain/usecases/get_orders_usecase.dart';
 import 'package:e_commerce_clot/features/order/domain/usecases/order_registration_usecase.dart';
 import 'package:e_commerce_clot/features/order/domain/usecases/remove_cart_product_usecases.dart';
 import 'package:e_commerce_clot/features/product/data/repo/product_repo_impl.dart';
@@ -40,7 +41,9 @@ Future<void> ServiceLocator() async {
   //services
 
   getIt.registerSingleton<AuthFirebaseService>(AuthFirebaseServiceImpl());
-  getIt.registerSingleton<CategoryFirebaseService>(CategoryFirebaseServiceImpl());
+  getIt.registerSingleton<CategoryFirebaseService>(
+    CategoryFirebaseServiceImpl(),
+  );
   getIt.registerSingleton<ProductFirebaseService>(ProductFirebaseServiceImpl());
   getIt.registerSingleton<OrderFirebaseService>(OrderFirebaseServiceImpl());
 
@@ -51,24 +54,35 @@ Future<void> ServiceLocator() async {
   getIt.registerSingleton<OrderRepo>(OrderRepoImpl());
   //usecases
 
-    getIt.registerSingleton<SignupUsecase>(SignupUsecase());
-    getIt.registerSingleton<SigninUsecase>(SigninUsecase());
-    getIt.registerSingleton<GetAgesUsecase>(GetAgesUsecase());
-    getIt.registerSingleton<SendPasswordResetEmailUsecase>(SendPasswordResetEmailUsecase());
-    getIt.registerSingleton<IsLoggedInUsecase>(IsLoggedInUsecase());
-    getIt.registerSingleton<GetUserUsecase>(GetUserUsecase());
-    getIt.registerSingleton<GetCategoriesUsecase>(GetCategoriesUsecase());
-    getIt.registerSingleton<GetTopSellingUsecase>(GetTopSellingUsecase());
-    getIt.registerSingleton<GetNewInUsecase>(GetNewInUsecase());
-    getIt.registerSingleton<GetProductsByCategoryIdUsecase>(GetProductsByCategoryIdUsecase());
-    getIt.registerSingleton<GetProductsByTitleUsecase>(GetProductsByTitleUsecase());
-    getIt.registerSingleton<AddToCartUsecase>(AddToCartUsecase());
-    getIt.registerSingleton<GetCartProductUsecases>(GetCartProductUsecases());
-    getIt.registerSingleton<RemoveCartProductUsecases>(RemoveCartProductUsecases());
-    getIt.registerSingleton<OrderRegistrationUsecase>(OrderRegistrationUsecase());
-    getIt.registerSingleton<AddOrRemoveFavoriteUsecase>(AddOrRemoveFavoriteUsecase());
-    getIt.registerSingleton<IsFavoriteUsecase>(IsFavoriteUsecase());
-    getIt.registerSingleton<GetFavoritesProductsUsecase>(GetFavoritesProductsUsecase());
-
+  getIt.registerSingleton<SignupUsecase>(SignupUsecase());
+  getIt.registerSingleton<SigninUsecase>(SigninUsecase());
+  getIt.registerSingleton<GetAgesUsecase>(GetAgesUsecase());
+  getIt.registerSingleton<SendPasswordResetEmailUsecase>(
+    SendPasswordResetEmailUsecase(),
+  );
+  getIt.registerSingleton<IsLoggedInUsecase>(IsLoggedInUsecase());
+  getIt.registerSingleton<GetUserUsecase>(GetUserUsecase());
+  getIt.registerSingleton<GetCategoriesUsecase>(GetCategoriesUsecase());
+  getIt.registerSingleton<GetTopSellingUsecase>(GetTopSellingUsecase());
+  getIt.registerSingleton<GetNewInUsecase>(GetNewInUsecase());
+  getIt.registerSingleton<GetProductsByCategoryIdUsecase>(
+    GetProductsByCategoryIdUsecase(),
+  );
+  getIt.registerSingleton<GetProductsByTitleUsecase>(
+    GetProductsByTitleUsecase(),
+  );
+  getIt.registerSingleton<AddToCartUsecase>(AddToCartUsecase());
+  getIt.registerSingleton<GetCartProductUsecases>(GetCartProductUsecases());
+  getIt.registerSingleton<RemoveCartProductUsecases>(
+    RemoveCartProductUsecases(),
+  );
+  getIt.registerSingleton<OrderRegistrationUsecase>(OrderRegistrationUsecase());
+  getIt.registerSingleton<AddOrRemoveFavoriteUsecase>(
+    AddOrRemoveFavoriteUsecase(),
+  );
+  getIt.registerSingleton<IsFavoriteUsecase>(IsFavoriteUsecase());
+  getIt.registerSingleton<GetFavoritesProductsUsecase>(
+    GetFavoritesProductsUsecase(),
+  );
+  getIt.registerSingleton<GetOrdersUsecase>(GetOrdersUsecase());
 }
-

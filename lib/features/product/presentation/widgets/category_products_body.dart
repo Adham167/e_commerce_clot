@@ -3,7 +3,7 @@ import 'package:e_commerce_clot/core/utils/app_style.dart';
 import 'package:e_commerce_clot/features/category/domain/entities/category_entity.dart';
 import 'package:e_commerce_clot/features/product/domain/usecases/get_products_by_category_id.dart';
 import 'package:e_commerce_clot/features/product/presentation/manager/product_display_cubit/product_display_cubit.dart';
-import 'package:e_commerce_clot/features/product/presentation/views/category_products_grid_view.dart';
+import 'package:e_commerce_clot/features/product/presentation/views/products_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,7 +34,7 @@ class CategoryProductsBody extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
 
-                  CategoryProductsGridView(productList: state.productEntity),
+                  ProductsGridView(productList: state.productEntity),
                 ],
               );
             }

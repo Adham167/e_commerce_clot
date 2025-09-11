@@ -2,8 +2,8 @@ import 'package:e_commerce_clot/features/product/domain/entities/product_entity.
 import 'package:e_commerce_clot/core/utils/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
-class CategoryProductsGridView extends StatelessWidget {
-  const CategoryProductsGridView({super.key, required this.productList});
+class ProductsGridView extends StatelessWidget {
+  const ProductsGridView({super.key, required this.productList});
   final List<ProductEntity> productList;
   @override
   Widget build(BuildContext context) {
