@@ -40,10 +40,13 @@ class UserAuthRepoImpl extends UserAuthRepo {
         return Left(error);
       },
       (data) {
-        return Right(
-          UserDataModel.fromMap(data).toEntity(),
-          );
+        return Right(UserDataModel.fromMap(data).toEntity());
       },
     );
+  }
+
+  @override
+  Future<Either> logOut() async {
+    return await getIt<AuthFirebaseService>().logOut();
   }
 }

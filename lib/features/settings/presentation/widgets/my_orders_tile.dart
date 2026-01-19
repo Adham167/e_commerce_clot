@@ -1,5 +1,6 @@
 import 'package:e_commerce_clot/core/utils/app_colors.dart';
 import 'package:e_commerce_clot/core/utils/app_router.dart';
+import 'package:e_commerce_clot/core/utils/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -14,17 +15,14 @@ class MyOrdersTile extends StatelessWidget {
         height: 80,
         padding: const EdgeInsets.symmetric(horizontal: 16),
         decoration: BoxDecoration(
-          color: AppColors.secondbackground,
+          color: AppColors.secondBackground,
           borderRadius: BorderRadius.circular(10),
         ),
         child: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'My Orders',
-              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
-            ),
-            Icon(Icons.arrow_forward_ios_rounded),
+            Text('My Orders', style: AppStyle.styleBold16),
+            Icon(Icons.arrow_forward_ios_rounded, color: AppColors.black),
           ],
         ),
       ),

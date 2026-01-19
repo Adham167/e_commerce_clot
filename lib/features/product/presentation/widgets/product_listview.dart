@@ -20,3 +20,20 @@ class ProductListview extends StatelessWidget {
     );
   }
 }
+
+class LoaddingProductListview extends StatelessWidget {
+  const LoaddingProductListview({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 300,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        physics: const BouncingScrollPhysics(),
+        itemBuilder: (context, index) => const LoaddingProductCard(),
+        separatorBuilder: (context, index) => const SizedBox(width: 10),
+        itemCount: 10,
+      ),
+    );
+  }
+}

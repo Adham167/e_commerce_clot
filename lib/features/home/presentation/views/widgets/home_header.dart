@@ -1,12 +1,10 @@
 import 'package:e_commerce_clot/core/entities/user_entity.dart';
-import 'package:e_commerce_clot/core/utils/app_colors.dart';
-import 'package:e_commerce_clot/core/utils/app_router.dart';
-import 'package:e_commerce_clot/core/utils/app_style.dart';
-import 'package:e_commerce_clot/core/utils/assets.dart';
 import 'package:e_commerce_clot/features/home/presentation/manager/user_info_display_cubit/user_info_display_cubit.dart';
+import 'package:e_commerce_clot/features/home/presentation/views/widgets/cart_widget.dart';
+import 'package:e_commerce_clot/features/home/presentation/views/widgets/gender_widget.dart';
+import 'package:e_commerce_clot/features/home/presentation/views/widgets/profile_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({super.key});
@@ -20,16 +18,9 @@ class HomeHeader extends StatelessWidget {
         child: BlocBuilder<UserInfoDisplayCubit, UserInfoDisplayState>(
           builder: (context, state) {
             if (state is UserInfoDisplayLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return const LoaddingHeaderWidget();
             } else if (state is UserInfoDisplayLoaded) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _profileImage(context, state.userEntity),
-                  _gender(state.userEntity),
-                  _card(context),
-                ],
-              );
+              return LoadedHeaderWidget(user: state.userEntity);
             }
             return Container();
           },
@@ -37,56 +28,35 @@ class HomeHeader extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _profileImage(BuildContext context, UserEntity user) {
-    return GestureDetector(
-      onTap: () => GoRouter.of(context).push(AppRouter.kSettingsView),
-      child: Container(
-        height: 40,
-        width: 40,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image:
-                user.image.isEmpty
-                    ? const AssetImage(Assets.imagesProfile1)
-                    : NetworkImage(user.image),
-          ),
-          color: Colors.red,
-          shape: BoxShape.circle,
-        ),
-      ),
+class LoadedHeaderWidget extends StatelessWidget {
+  const LoadedHeaderWidget({super.key, required this.user});
+  final UserEntity user;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        ProfileImage(user: user),
+        GenderWidget(user: user),
+        const CartWidget(),
+      ],
     );
   }
+}
 
-  Widget _gender(UserEntity user) {
-    return Container(
-      height: 40,
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      decoration: BoxDecoration(
-        color: AppColors.secondbackground,
-        borderRadius: BorderRadius.circular(100),
-      ),
-      child: Center(
-        child: Text(
-          user.gender == 1 ? "Men" : "Women",
-          style: AppStyle.styleBold12,
-        ),
-      ),
-    );
-  }
-
-  Widget _card(BuildContext context) {
-    return GestureDetector(
-      onTap: () => GoRouter.of(context).push(AppRouter.kCartView),
-      child: Container(
-        height: 40,
-        width: 40,
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: AppColors.primary,
-        ),
-        child: Image.asset(Assets.imagesCard, fit: BoxFit.none),
-      ),
+class LoaddingHeaderWidget extends StatelessWidget {
+  const LoaddingHeaderWidget({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return const Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        LoaddingProfileImage(),
+        LoaddingGenderWidget(),
+        LoaddingCartWidget(),
+      ],
     );
   }
 }

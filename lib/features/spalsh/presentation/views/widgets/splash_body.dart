@@ -17,7 +17,10 @@ class SplashBody extends StatelessWidget {
             child: Transform.scale(scale: value, child: child),
           );
         },
-        child: Image.asset(Assets.imagesLogo1),
+        child: SizedBox(
+          height: 120,
+          child: Image.asset(Assets.imagesShoppingCart),
+        ),
       ),
     );
   }

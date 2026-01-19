@@ -5,8 +5,9 @@ import 'package:e_commerce_clot/features/authintication/data/models/user_signin_
 abstract class AuthFirebaseService {
   Future<Either> signup(UserModel user);
   Future<Either> signin(UserSigninModel user);
-    Future<Either> sendPasswordResetEmail(String email);
+  Future<Either> sendPasswordResetEmail(String email);
   Future<Either> getAges();
   Future<Either> getUser();
   Future<bool> isLoggedin();
+  Future<Either> logOut();
 }

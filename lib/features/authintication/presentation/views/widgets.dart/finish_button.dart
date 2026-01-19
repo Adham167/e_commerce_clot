@@ -15,7 +15,7 @@ class FinishButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 100,
-      color: AppColors.secondbackground,
+      color: AppColors.secondBackground,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Center(

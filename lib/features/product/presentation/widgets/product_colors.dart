@@ -28,12 +28,7 @@ class ProductColors extends StatelessWidget {
             height: 40,
             child: Stack(
               children: [
-                const Center(
-                  child: Text(
-                    'Color',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-                  ),
-                ),
+                const Center(child: Text('Color', style: AppStyle.styleBold24)),
                 Align(
                   alignment: Alignment.bottomRight,
                   child: IconButton(
@@ -65,7 +60,7 @@ class ProductColors extends StatelessWidget {
                           color:
                               state == index
                                   ? AppColors.primary
-                                  : AppColors.secondbackground,
+                                  : AppColors.secondBackground,
                           borderRadius: BorderRadius.circular(50),
                         ),
                         child: Padding(

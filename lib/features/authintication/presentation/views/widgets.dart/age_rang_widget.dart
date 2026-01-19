@@ -1,5 +1,6 @@
 import 'package:e_commerce_clot/core/utils/app_bottom_sheet.dart';
 import 'package:e_commerce_clot/core/utils/app_colors.dart';
+import 'package:e_commerce_clot/core/utils/app_style.dart';
 import 'package:e_commerce_clot/features/authintication/presentation/manager/age_range_cubit/age_range_cubit.dart';
 import 'package:e_commerce_clot/features/authintication/presentation/manager/age_display_cubit/age_display_cubit.dart';
 import 'package:e_commerce_clot/features/authintication/presentation/views/widgets.dart/ages.dart';
@@ -32,14 +33,14 @@ class AgeRangWidget extends StatelessWidget {
             height: 60,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             decoration: BoxDecoration(
-              color: AppColors.secondbackground,
+              color: AppColors.secondBackground,
               borderRadius: BorderRadius.circular(30),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(state),
-                const Icon(Icons.keyboard_arrow_down)
+                Text(state, style: AppStyle.styleBold16),
+                const Icon(Icons.keyboard_arrow_down),
               ],
             ),
           ),

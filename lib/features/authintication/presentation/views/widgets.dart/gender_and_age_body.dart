@@ -36,6 +36,7 @@ class GenderAndAgeBody extends StatelessWidget {
         },
         child: Column(
           children: [
+            SizedBox(height: MediaQuery.of(context).size.height / 7),
             const Padding(
               padding: EdgeInsets.only(top: 32.0, left: 16, right: 16),
               child: Column(

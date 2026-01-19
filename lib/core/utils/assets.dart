@@ -30,6 +30,10 @@ class Assets {
   /// assets/images/OrderedSuccessfully.png
   static const String imagesOrderedSuccessfully = "assets/images/OrderedSuccessfully.png";
 
+  /// Assets for imagesPhoto1
+  /// assets/images/Photo_1.png
+  static const String imagesPhoto1 = "assets/images/Photo_1.png";
+
   /// Assets for imagesProfile1
   /// assets/images/profile_1.png
   static const String imagesProfile1 = "assets/images/profile_1.png";
@@ -37,5 +41,9 @@ class Assets {
   /// Assets for imagesSearchIcon
   /// assets/images/Search_icon.png
   static const String imagesSearchIcon = "assets/images/Search_icon.png";
+
+  /// Assets for imagesShoppingCart
+  /// assets/images/shopping-cart.png
+  static const String imagesShoppingCart = "assets/images/shopping-cart.png";
 }
 

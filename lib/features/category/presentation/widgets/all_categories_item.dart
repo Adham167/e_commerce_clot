@@ -18,7 +18,7 @@ class AllCategoriesItem extends StatelessWidget {
           height: 70,
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: AppColors.secondbackground,
+            color: AppColors.secondBackground,
             borderRadius: BorderRadius.circular(8),
           ),
           child: Row(

@@ -5,6 +5,7 @@ import 'package:e_commerce_clot/features/authintication/data/source/auth_firebas
 import 'package:e_commerce_clot/features/authintication/domain/usecases/get_ages_usecase.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/get_user_usecase.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/is_logged_in_usecase.dart';
+import 'package:e_commerce_clot/features/authintication/domain/usecases/log_out_usecase.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/send_password_reset_email_usecase.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/signin_usecase.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/signup_usecase.dart';
@@ -85,4 +86,5 @@ Future<void> ServiceLocator() async {
     GetFavoritesProductsUsecase(),
   );
   getIt.registerSingleton<GetOrdersUsecase>(GetOrdersUsecase());
+  getIt.registerSingleton<LogOutUsecase>(LogOutUsecase());
 }

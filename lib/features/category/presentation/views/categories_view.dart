@@ -14,7 +14,9 @@ class CategoriesView extends StatelessWidget {
       child: BlocBuilder<CategoriesDisplayCubit, CategoriesDisplayState>(
         builder: (context, state) {
           if (state is CategoriesDisplayLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const Column(
+              children: [SeeAllCatWidget(), LoaddingCategoriesListView()],
+            );
           } else if (state is CategoriesDisplayLoaded) {
             return Column(
               children: [

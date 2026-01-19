@@ -18,7 +18,7 @@ class SearchView extends StatelessWidget {
           (context) =>
               ProductDisplayCubit(usecase: getIt<GetProductsByTitleUsecase>()),
       child: Scaffold(
-        appBar: const CustomAppBar(height: 80, title: SearchWidget()),
+        appBar: const CustomAppBar(height: 90, title: SearchWidget()),
         body: BlocBuilder<ProductDisplayCubit, ProductDisplayState>(
           builder: (context, state) {
             if (state is ProductDisplayLoading) {

@@ -27,7 +27,7 @@ class SelectedSizeWidget extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 8),
         padding: const EdgeInsets.symmetric(horizontal: 12),
         decoration: BoxDecoration(
-          color: AppColors.secondbackground,
+          color: AppColors.secondBackground,
           borderRadius: BorderRadius.circular(100),
         ),
         child: Row(
@@ -38,14 +38,14 @@ class SelectedSizeWidget extends StatelessWidget {
               children: [
                 BlocBuilder<ProductSizesCubit, int>(
                   builder: (context, state) {
-                    return Text(  
-                      productEntity.sizes[state ],
+                    return Text(
+                      productEntity.sizes[state],
                       style: AppStyle.styleBold16,
                     );
                   },
                 ),
                 const SizedBox(width: 12),
-                const Icon(Icons.keyboard_arrow_down),
+                const Icon(Icons.keyboard_arrow_down, color: AppColors.black),
               ],
             ),
           ],

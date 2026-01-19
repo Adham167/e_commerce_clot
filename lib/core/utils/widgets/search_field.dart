@@ -1,6 +1,6 @@
+import 'package:e_commerce_clot/core/utils/app_colors.dart';
 import 'package:e_commerce_clot/core/utils/app_router.dart';
 import 'package:e_commerce_clot/core/utils/app_style.dart';
-import 'package:e_commerce_clot/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,9 +22,9 @@ class SearchField extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(50),
           ),
-          prefixIcon: Image.asset(Assets.imagesSearchIcon),
+          prefixIcon: const Icon(Icons.search, color: AppColors.black),
           hintText: "Search",
-          hintStyle: AppStyle.styleMedium12,
+          hintStyle: AppStyle.styleMedium16,
         ),
       ),
     );

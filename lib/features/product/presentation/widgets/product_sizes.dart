@@ -28,12 +28,7 @@ class ProductSizes extends StatelessWidget {
             height: 40,
             child: Stack(
               children: [
-                const Center(
-                  child: Text(
-                    'Color',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-                  ),
-                ),
+                const Center(child: Text('Size', style: AppStyle.styleBold24)),
                 Align(
                   alignment: Alignment.bottomRight,
                   child: IconButton(
@@ -65,7 +60,7 @@ class ProductSizes extends StatelessWidget {
                           color:
                               state == index
                                   ? AppColors.primary
-                                  : AppColors.secondbackground,
+                                  : AppColors.secondBackground,
                           borderRadius: BorderRadius.circular(50),
                         ),
                         child: Padding(
@@ -73,7 +68,7 @@ class ProductSizes extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text("Colors", style: AppStyle.styleBold16),
+                              const Text("Size", style: AppStyle.styleBold16),
                               Row(
                                 children: [
                                   SizedBox(

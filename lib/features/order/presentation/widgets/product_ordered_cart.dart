@@ -1,4 +1,5 @@
 import 'package:e_commerce_clot/core/utils/app_colors.dart';
+import 'package:e_commerce_clot/core/utils/app_style.dart';
 import 'package:e_commerce_clot/features/order/domain/entities/product_ordered_entity.dart';
 import 'package:e_commerce_clot/features/order/presentation/manager/cubit/cart_products_cubit.dart';
 import 'package:flutter/material.dart';
@@ -6,15 +7,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductOrderedCard extends StatelessWidget {
   final ProductOrderedEntity productOrderedEntity;
-  const ProductOrderedCard({required this.productOrderedEntity, super.key});
-
+  const ProductOrderedCard({
+    required this.productOrderedEntity,
+    super.key,
+    this.isOrdered = false,
+  });
+  final bool isOrdered;
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 100,
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: AppColors.secondbackground,
+        color: AppColors.secondBackground,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
@@ -50,10 +55,7 @@ class ProductOrderedCard extends StatelessWidget {
                       Text(
                         productOrderedEntity.productTitle,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                        ),
+                        style: AppStyle.styleBold16,
                       ),
                       Row(
                         children: [
@@ -61,18 +63,12 @@ class ProductOrderedCard extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             TextSpan(
                               text: 'Size - ',
-                              style: const TextStyle(
-                                color: Colors.grey,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 10,
-                              ),
+                              style: AppStyle.styleSmall12,
                               children: [
                                 TextSpan(
                                   text: productOrderedEntity.productSize,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 10,
+                                  style: AppStyle.styleSmall12.copyWith(
+                                    color: AppColors.black,
                                   ),
                                 ),
                               ],
@@ -83,18 +79,12 @@ class ProductOrderedCard extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             TextSpan(
                               text: 'Color - ',
-                              style: const TextStyle(
-                                color: Colors.grey,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 10,
-                              ),
+                              style: AppStyle.styleSmall12,
                               children: [
                                 TextSpan(
                                   text: productOrderedEntity.productColor,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 10,
+                                  style: AppStyle.styleSmall12.copyWith(
+                                    color: AppColors.black,
                                   ),
                                 ),
                               ],
@@ -115,27 +105,26 @@ class ProductOrderedCard extends StatelessWidget {
               children: [
                 Text(
                   '\$${productOrderedEntity.totalPrice}',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                  ),
+                  style: AppStyle.styleBold16,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    BlocProvider.of<CartProductsCubit>(
-                      context,
-                    ).removeProduct(productOrderedEntity);  
-                  },
-                  child: Container(
-                    height: 23,
-                    width: 23,
-                    decoration: const BoxDecoration(
-                      color: Color(0xffFF8383),
-                      shape: BoxShape.circle,
+                isOrdered
+                    ? Container()
+                    : GestureDetector(
+                      onTap: () {
+                        BlocProvider.of<CartProductsCubit>(
+                          context,
+                        ).removeProduct(productOrderedEntity);
+                      },
+                      child: Container(
+                        height: 23,
+                        width: 23,
+                        decoration: const BoxDecoration(
+                          color: Color(0xffFF8383),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(Icons.remove, size: 15),
+                      ),
                     ),
-                    child: const Icon(Icons.remove, size: 15),
-                  ),
-                ),
               ],
             ),
           ),

@@ -22,7 +22,7 @@ class GenderTile extends StatelessWidget {
             color:
                 BlocProvider.of<GenderCubit>(context).selectedIndex == index
                     ? AppColors.primary
-                    : AppColors.secondbackground,
+                    : AppColors.secondBackground,
             borderRadius: BorderRadius.circular(30),
           ),
           child: Center(child: Text(gender, style: AppStyle.styleMedium16)),

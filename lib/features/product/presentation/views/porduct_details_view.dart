@@ -18,30 +18,23 @@ class PorductDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => ProductQuantityCubit()),
+        BlocProvider(create: (context) => ProductColorsCubit()),
+        BlocProvider(create: (context) => ProductSizesCubit()),
+        BlocProvider(create: (context) => ButtonCubit()),
         BlocProvider(
-          create: (context) => ProductQuantityCubit(),
+          create:
+              (context) =>
+                  FavoriteIconCubit()..isFavorite(productEntity.productId),
         ),
-        BlocProvider(
-          create: (context) => ProductColorsCubit(),
-        ),
-        BlocProvider(
-          create: (context) => ProductSizesCubit(),
-        ),
-        BlocProvider(
-          create: (context) => ButtonCubit(),
-        ),
-        BlocProvider(
-          create: (context) => FavoriteIconCubit()..isFavorite(productEntity.productId),
-        ),
-       
       ],
-      child:Scaffold(
+      child: Scaffold(
         appBar: CustomAppBar(
           hideBack: false,
           action: FavoriteButton(productEntity: productEntity),
         ),
-        bottomNavigationBar: AddToBagWidget(productEntity: productEntity),
         body: ProductDetailsBody(productEntity: productEntity),
+        bottomNavigationBar: AddToBagWidget(productEntity: productEntity),
       ),
     );
   }

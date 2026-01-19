@@ -12,9 +12,28 @@ class CategoriesListView extends StatelessWidget {
       child: ListView.separated(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => CategoriesListItem(categoryEntity: categoryList[index],),
+        itemBuilder:
+            (context, index) =>
+                CategoriesListItem(categoryEntity: categoryList[index]),
         separatorBuilder: (context, index) => const SizedBox(width: 16),
         itemCount: categoryList.length,
+      ),
+    );
+  }
+}
+
+class LoaddingCategoriesListView extends StatelessWidget {
+  const LoaddingCategoriesListView({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 100,
+      child: ListView.separated(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) => const LoaddingCategoriesListItem(),
+        separatorBuilder: (context, index) => const SizedBox(width: 16),
+        itemCount: 10,
       ),
     );
   }

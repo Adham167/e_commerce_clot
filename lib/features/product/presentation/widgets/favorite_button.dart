@@ -17,7 +17,7 @@ class FavoriteButton extends StatelessWidget {
         height: 40,
         width: 40,
         decoration: const BoxDecoration(
-          color: AppColors.secondbackground,
+          color: AppColors.secondBackground,
           shape: BoxShape.circle,
         ),
         child: BlocBuilder<FavoriteIconCubit, bool>(
@@ -25,7 +25,7 @@ class FavoriteButton extends StatelessWidget {
               (context, state) => Icon(
                 state ? Icons.favorite : Icons.favorite_outline,
                 size: 15,
-                color: Colors.white,
+                color: AppColors.red,
               ),
         ),
       ),

@@ -8,6 +8,9 @@ class GenderAndAgeView extends StatelessWidget {
   final UserModel userModel;
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(appBar: const CustomAppBar(), body: GenderAndAgeBody(userModel: userModel,));
+    return Scaffold(
+      appBar: const CustomAppBar(),
+      body: GenderAndAgeBody(userModel: userModel),
+    );
   }
 }

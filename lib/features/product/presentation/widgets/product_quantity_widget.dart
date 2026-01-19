@@ -15,7 +15,7 @@ class ProductQuantityWidget extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 8),
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
-        color: AppColors.secondbackground,
+        color: AppColors.secondBackground,
         borderRadius: BorderRadius.circular(100),
       ),
       child: Row(
@@ -35,7 +35,13 @@ class ProductQuantityWidget extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: AppColors.primary,
                   ),
-                  child: const Center(child: Icon(Icons.remove, size: 30)),
+                  child: const Center(
+                    child: Icon(
+                      Icons.remove,
+                      size: 30,
+                      color: AppColors.background,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(width: 10),
@@ -58,7 +64,13 @@ class ProductQuantityWidget extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: AppColors.primary,
                   ),
-                  child: const Center(child: Icon(Icons.add, size: 30)),
+                  child: const Center(
+                    child: Icon(
+                      Icons.add,
+                      size: 30,
+                      color: AppColors.background,
+                    ),
+                  ),
                 ),
               ),
             ],

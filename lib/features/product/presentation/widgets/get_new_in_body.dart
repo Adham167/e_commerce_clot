@@ -26,7 +26,7 @@ class GetNewInBody extends StatelessWidget {
             BlocBuilder<ProductDisplayCubit, ProductDisplayState>(
               builder: (context, state) {
                 if (state is ProductDisplayLoading) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const LoaddingProductListview();
                 } else if (state is ProductDisplayLoaded) {
                   return ProductListview(productList: state.productEntity);
                 }

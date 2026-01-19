@@ -1,3 +1,4 @@
+import 'package:e_commerce_clot/core/utils/app_colors.dart';
 import 'package:e_commerce_clot/core/utils/app_style.dart';
 import 'package:e_commerce_clot/features/authintication/presentation/manager/button_cubit/button_cubit.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class CustomReactiveButton extends StatelessWidget {
       child: Container(
         height: height ?? 50,
         alignment: Alignment.center,
-        child: const CircularProgressIndicator(),
+        child: const CircularProgressIndicator(color: AppColors.background),
       ),
     );
   }

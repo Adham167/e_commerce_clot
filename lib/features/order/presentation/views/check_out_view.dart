@@ -1,4 +1,5 @@
 import 'package:e_commerce_clot/core/utils/app_router.dart';
+import 'package:e_commerce_clot/core/utils/app_style.dart';
 import 'package:e_commerce_clot/core/utils/functions/cart.dart';
 import 'package:e_commerce_clot/core/utils/widgets/custom_app_bar.dart';
 import 'package:e_commerce_clot/core/utils/widgets/custom_reactive_button.dart';
@@ -19,7 +20,9 @@ class CheckOutView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: Text('Checkout')),
+      appBar: const CustomAppBar(
+        title: Text('Checkout', style: AppStyle.styleBold24),
+      ),
       body: BlocProvider(
         create: (context) => ButtonCubit(),
         child: BlocListener<ButtonCubit, ButtonState>(

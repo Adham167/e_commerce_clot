@@ -1,5 +1,6 @@
 import 'package:e_commerce_clot/core/utils/app_colors.dart';
 import 'package:e_commerce_clot/core/utils/app_router.dart';
+import 'package:e_commerce_clot/core/utils/app_style.dart';
 import 'package:e_commerce_clot/core/utils/functions/cart.dart';
 import 'package:e_commerce_clot/core/utils/widgets/custom_button.dart';
 import 'package:e_commerce_clot/features/order/domain/entities/product_ordered_entity.dart';
@@ -27,10 +28,7 @@ class CheckOut extends StatelessWidget {
               ),
               Text(
                 '\$${Cart.calculateCartSubtotal(productList).toString()}',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
+                style: AppStyle.styleBold16,
               ),
             ],
           ),
@@ -42,20 +40,14 @@ class CheckOut extends StatelessWidget {
                 'Shipping Cost',
                 style: TextStyle(color: Colors.grey, fontSize: 16),
               ),
-              Text(
-                '\$8',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
+              Text('\$8', style: AppStyle.styleBold16),
             ],
           ),
           const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('Tax', style: TextStyle(color: Colors.grey, fontSize: 16)),
-              Text(
-                '\$0.0',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
+              Text('\$0.0', style: AppStyle.styleBold16),
             ],
           ),
 
@@ -68,10 +60,7 @@ class CheckOut extends StatelessWidget {
               ),
               Text(
                 '\$${Cart.calculateCartSubtotal(productList) + 8}',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
+                style: AppStyle.styleBold16,
               ),
             ],
           ),

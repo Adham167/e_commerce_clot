@@ -23,7 +23,6 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
             'lastname': user.lastName,
             'email': user.eamil,
             'password': user.password,
-
             'gender': user.gender,
             'age': user.age,
           });
@@ -101,6 +100,16 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
       return Right(userData);
     } catch (e) {
       return const Left('Please try again');
+    }
+  }
+
+  @override
+  Future<Either> logOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      return const Right("Logged out !!");
+    } catch (e) {
+      return Left("ERROR $e TRY AGAIN");
     }
   }
 }
