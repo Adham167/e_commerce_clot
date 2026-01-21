@@ -45,7 +45,7 @@ class SelectedSizeWidget extends StatelessWidget {
                   },
                 ),
                 const SizedBox(width: 12),
-                const Icon(Icons.keyboard_arrow_down, color: AppColors.black),
+                const Icon(Icons.keyboard_arrow_down, color: AppColors.textPrimary),
               ],
             ),
           ],

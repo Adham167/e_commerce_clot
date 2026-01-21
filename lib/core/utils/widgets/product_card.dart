@@ -81,7 +81,7 @@ class ProductCard extends StatelessWidget {
                           style: AppStyle.styleSmall12.copyWith(
                             color: AppColors.primary,
                             decoration: TextDecoration.lineThrough,
-                            decorationColor: AppColors.black,
+                            decorationColor: AppColors.textPrimary,
                           ),
                           // const TextStyle(
                           //   fontSize: 12,

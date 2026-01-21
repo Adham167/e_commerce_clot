@@ -10,7 +10,7 @@ class AppTheme {
     brightness: Brightness.dark,
     fontFamily: 'CircularStd',
     snackBarTheme: SnackBarThemeData(
-      backgroundColor: AppColors.black,
+      backgroundColor: AppColors.textPrimary,
       contentTextStyle: AppStyle.styleBold16.copyWith(
         color: AppColors.secondBackground,
       ),

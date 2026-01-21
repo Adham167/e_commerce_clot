@@ -22,7 +22,7 @@ class SearchField extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(50),
           ),
-          prefixIcon: const Icon(Icons.search, color: AppColors.black),
+          prefixIcon: const Icon(Icons.search, color: AppColors.textPrimary),
           hintText: "Search",
           hintStyle: AppStyle.styleMedium16,
         ),

@@ -3,20 +3,44 @@ import 'package:e_commerce_clot/features/order/presentation/widgets/product_orde
 import 'package:flutter/material.dart';
 
 class ProductOrderedListview extends StatelessWidget {
-  const ProductOrderedListview({super.key, required this.products, this.isOrdered = false});
+  const ProductOrderedListview({
+    super.key,
+    required this.products,
+    this.isOrdered = false,
+  });
   final List<ProductOrderedEntity> products;
-   final bool isOrdered ;
+  final bool isOrdered;
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-          child: ProductOrderedCard(productOrderedEntity: products[index],isOrdered: isOrdered,),
+          child: ProductOrderedCard(
+            productOrderedEntity: products[index],
+            isOrdered: isOrdered,
+          ),
         );
       },
       separatorBuilder: (context, index) => const SizedBox(height: 10),
       itemCount: products.length,
+    );
+  }
+}
+
+class LoaddingProductOrderedListview extends StatelessWidget {
+  const LoaddingProductOrderedListview({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      itemBuilder: (context, index) {
+        return const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+          child: LoaddingProductOrderedCard(),
+        );
+      },
+      separatorBuilder: (context, index) => const SizedBox(height: 10),
+      itemCount: 10,
     );
   }
 }

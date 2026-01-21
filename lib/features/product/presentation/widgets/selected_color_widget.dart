@@ -55,7 +55,7 @@ class SelectedColorWidget extends StatelessWidget {
                 ),
 
                 const SizedBox(width: 8),
-                const Icon(Icons.keyboard_arrow_down, color: AppColors.black),
+                const Icon(Icons.keyboard_arrow_down, color: AppColors.textPrimary),
               ],
             ),
           ],

@@ -1,5 +1,4 @@
 import 'package:e_commerce_clot/core/utils/widgets/empty_widget.dart';
-import 'package:e_commerce_clot/features/product/presentation/views/products_grid_view.dart';
 import 'package:e_commerce_clot/features/settings/presentation/manager/order_display_cubit/order_display_cubit.dart';
 import 'package:e_commerce_clot/features/settings/presentation/widgets/my_orders_list_view.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +14,11 @@ class MyOrdersBody extends StatelessWidget {
       child: BlocBuilder<OrderDisplayCubit, OrderDisplayState>(
         builder: (context, state) {
           if (state is OrderDisplayLoaded) {
-            return state.orders.isEmpty? const EmptyWidget() :MyOrdersListView(orders: state.orders);
+            return state.orders.isEmpty
+                ? const EmptyWidget()
+                : Expanded(child: MyOrdersListView(orders: state.orders));
           } else if (state is OrderDisplayLoading) {
-            return const LoaddingProductsGridView();
+            return const Expanded(child: LoaddingMyOrdersListView());
           } else if (state is OrderDisplayFailure) {
             return const Center(child: Text("Please try again"));
           }

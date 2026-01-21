@@ -15,7 +15,7 @@ class CartBody extends StatelessWidget {
       child: BlocBuilder<CartProductsCubit, CartProductsState>(
         builder: (context, state) {
           if (state is CartProductsLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const LoaddingProductOrderedListview();
           } else if (state is CartProductsLoaded) {
             return state.productList.isNotEmpty
                 ? Stack(

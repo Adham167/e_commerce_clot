@@ -1,5 +1,6 @@
 import 'package:e_commerce_clot/core/utils/app_colors.dart';
 import 'package:e_commerce_clot/core/utils/app_router.dart';
+import 'package:e_commerce_clot/core/utils/app_style.dart';
 import 'package:e_commerce_clot/core/utils/widgets/custom_app_bar.dart';
 import 'package:e_commerce_clot/features/order/domain/entities/oreder_entity.dart';
 import 'package:flutter/material.dart';
@@ -8,133 +9,179 @@ import 'package:go_router/go_router.dart';
 class OrderDetailsView extends StatelessWidget {
   const OrderDetailsView({super.key, required this.orederEntity});
   final OrederEntity orederEntity;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: Text('Order #${orederEntity.code}')),
+      backgroundColor: AppColors.background,
+      appBar: CustomAppBar(
+        title: Text(
+          'Order #${orederEntity.code}',
+          style: AppStyle.styleBold24.copyWith(
+            color: AppColors.textPrimary,
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _status(),
-            const SizedBox(height: 50),
-            _items(context),
-            const SizedBox(height: 30),
-            _shipping(),
+            StatusWidget(orederEntity: orederEntity),
+            const SizedBox(height: 32),
+            ItemsWidget(orederEntity: orederEntity),
+            const SizedBox(height: 32),
+            ShippingWidget(orederEntity: orederEntity),
           ],
         ),
       ),
     );
   }
+}
 
-  Widget _status() {
-    return ListView.separated(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Container(
-                  height: 30,
-                  width: 30,
-                  decoration: BoxDecoration(
-                    color:
-                        orederEntity.orderStatus[index].done
-                            ? AppColors.primary
-                            : Colors.white,
-                    shape: BoxShape.circle,
+class StatusWidget extends StatelessWidget {
+  const StatusWidget({super.key, required this.orederEntity});
+  final OrederEntity orederEntity;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppColors.cardBackground,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: ListView.separated(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        reverse: true,
+        itemCount: orederEntity.orderStatus.length,
+        separatorBuilder: (_, __) =>
+            const Divider(height: 40, color: AppColors.divider),
+        itemBuilder: (context, index) {
+          final status = orederEntity.orderStatus[index];
+          final isDone = status.done;
+
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    height: 28,
+                    width: 28,
+                    decoration: BoxDecoration(
+                      color:
+                          isDone
+                              ? AppColors.primary
+                              : AppColors.pending,
+                      shape: BoxShape.circle,
+                    ),
+                    child:
+                        isDone
+                            ? const Icon(
+                                Icons.check,
+                                size: 16,
+                                color: Colors.white,
+                              )
+                            : null,
                   ),
-                  child:
-                      orederEntity.orderStatus[index].done
-                          ? const Icon(Icons.check)
-                          : Container(),
-                ),
-                const SizedBox(width: 15),
-                Text(
-                  orederEntity.orderStatus[index].title,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                    color:
-                        orederEntity.orderStatus[index].done
-                            ? Colors.white
-                            : Colors.grey,
+                  const SizedBox(width: 12),
+                  Text(
+                    status.title,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color:
+                          isDone
+                              ? AppColors.textPrimary
+                              : AppColors.textSecondary,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Text(
-              orederEntity.orderStatus[index].createdDate
-                  .toDate()
-                  .toString()
-                  .split(' ')[0],
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14,
-                color:
-                    orederEntity.orderStatus[index].done
-                        ? Colors.white
-                        : Colors.grey,
+                ],
               ),
-            ),
-          ],
-        );
-      },
-      separatorBuilder: (context, index) => const SizedBox(height: 50),
-      reverse: true,
-      itemCount: orederEntity.orderStatus.length,
+              Text(
+                status.createdDate
+                    .toDate()
+                    .toString()
+                    .split(' ')[0],
+                style: TextStyle(
+                  fontSize: 12,
+                  color: AppColors.textSecondary,
+                ),
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
+}
 
-  Widget _items(BuildContext context) {
+class ItemsWidget extends StatelessWidget {
+  const ItemsWidget({super.key, required this.orederEntity});
+  final OrederEntity orederEntity;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Order Items',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+            color: AppColors.textPrimary,
+          ),
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 12),
         GestureDetector(
-          onTap: () {
-            
-          },
+          onTap:
+              () => GoRouter.of(context).push(
+                AppRouter.kOrderItemsView,
+                extra: orederEntity.products,
+              ),
           child: Container(
-            height: 70,
+            height: 72,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             decoration: BoxDecoration(
-              color: AppColors.secondBackground,
-              borderRadius: BorderRadius.circular(10),
+              color: AppColors.cardBackground,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: AppColors.divider),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
-                    const Icon(Icons.receipt_rounded),
-                    const SizedBox(width: 20),
+                    const Icon(
+                      Icons.receipt_rounded,
+                      color: AppColors.primary,
+                    ),
+                    const SizedBox(width: 16),
                     Text(
                       '${orederEntity.products.length} Items',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16,
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: AppColors.textPrimary,
                       ),
                     ),
                   ],
                 ),
-                GestureDetector(
-                  onTap: () => GoRouter.of(context).push(AppRouter.kOrderItemsView,extra: orederEntity.products),
-                  child: const Text(
-                    'View All',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14,
-                      color: AppColors.primary,
-                    ),
+                const Text(
+                  'View All',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.primary,
                   ),
                 ),
               ],
@@ -144,24 +191,42 @@ class OrderDetailsView extends StatelessWidget {
       ],
     );
   }
+}
 
-  Widget _shipping() {
+class ShippingWidget extends StatelessWidget {
+  const ShippingWidget({super.key, required this.orederEntity});
+  final OrederEntity orederEntity;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Shipping details',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+            color: AppColors.textPrimary,
+          ),
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 12),
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: AppColors.secondBackground,
-            borderRadius: BorderRadius.circular(10),
+            color: AppColors.cardBackground,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: AppColors.divider),
           ),
-          child: Text(orederEntity.shippingAddress),
+          child: Text(
+            orederEntity.shippingAddress,
+            style: TextStyle(
+              fontSize: 14,
+              height: 1.6,
+              color: AppColors.textSecondary,
+            ),
+          ),
         ),
       ],
     );

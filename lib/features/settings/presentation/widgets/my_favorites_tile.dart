@@ -22,7 +22,7 @@ class MyFavoritesTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('My Favorites', style: AppStyle.styleBold16),
-            Icon(Icons.arrow_forward_ios_rounded, color: AppColors.black),
+            Icon(Icons.arrow_forward_ios_rounded, color: AppColors.textPrimary),
           ],
         ),
       ),

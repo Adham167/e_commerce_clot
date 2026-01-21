@@ -7,11 +7,28 @@ class MyOrdersListView extends StatelessWidget {
   final List<OrederEntity> orders;
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: ListView.separated(
-        itemBuilder: (context, index) =>  MyOrderCard(orederEntity: orders[index],),
+        itemBuilder:
+            (context, index) => MyOrderCard(orederEntity: orders[index]),
         separatorBuilder: (context, index) => const SizedBox(height: 16),
         itemCount: orders.length,
+      ),
+    );
+  }
+}
+
+class LoaddingMyOrdersListView extends StatelessWidget {
+  const LoaddingMyOrdersListView({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: ListView.separated(
+        itemBuilder: (context, index) => const LoaddingMyOrderCard(),
+        separatorBuilder: (context, index) => const SizedBox(height: 16),
+        itemCount: 10,
       ),
     );
   }

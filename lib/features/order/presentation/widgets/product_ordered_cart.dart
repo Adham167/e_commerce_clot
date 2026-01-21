@@ -4,6 +4,7 @@ import 'package:e_commerce_clot/features/order/domain/entities/product_ordered_e
 import 'package:e_commerce_clot/features/order/presentation/manager/cubit/cart_products_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ProductOrderedCard extends StatelessWidget {
   final ProductOrderedEntity productOrderedEntity;
@@ -68,7 +69,7 @@ class ProductOrderedCard extends StatelessWidget {
                                 TextSpan(
                                   text: productOrderedEntity.productSize,
                                   style: AppStyle.styleSmall12.copyWith(
-                                    color: AppColors.black,
+                                    color: AppColors.textPrimary,
                                   ),
                                 ),
                               ],
@@ -84,7 +85,7 @@ class ProductOrderedCard extends StatelessWidget {
                                 TextSpan(
                                   text: productOrderedEntity.productColor,
                                   style: AppStyle.styleSmall12.copyWith(
-                                    color: AppColors.black,
+                                    color: AppColors.textPrimary,
                                   ),
                                 ),
                               ],
@@ -125,6 +126,130 @@ class ProductOrderedCard extends StatelessWidget {
                         child: const Icon(Icons.remove, size: 15),
                       ),
                     ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class LoaddingProductOrderedCard extends StatelessWidget {
+  const LoaddingProductOrderedCard({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: AppColors.secondBackground,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            flex: 4,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: Shimmer.fromColors(
+                    baseColor: Colors.grey.shade300,
+                    highlightColor: Colors.grey.shade100,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+
+                Expanded(
+                  flex: 6,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade100,
+                        child: Container(
+                          width: double.infinity,
+                          height: 12,
+                          decoration: BoxDecoration(
+                            color: AppColors.secondBackground,
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 6),
+
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Shimmer.fromColors(
+                              baseColor: Colors.grey.shade300,
+                              highlightColor: Colors.grey.shade100,
+                              child: Container(
+                                height: 10,
+                                decoration: BoxDecoration(
+                                  color: AppColors.secondBackground,
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Shimmer.fromColors(
+                              baseColor: Colors.grey.shade300,
+                              highlightColor: Colors.grey.shade100,
+                              child: Container(
+                                height: 10,
+                                decoration: BoxDecoration(
+                                  color: AppColors.secondBackground,
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Shimmer.fromColors(
+                  baseColor: Colors.grey.shade300,
+                  highlightColor: Colors.grey.shade100,
+                  child: Container(
+                    width: 50,
+                    height: 12,
+                    decoration: BoxDecoration(
+                      color: AppColors.secondBackground,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                  ),
+                ),
+
+                
               ],
             ),
           ),
