@@ -21,9 +21,9 @@ class AllCategoriesBody extends StatelessWidget {
             BlocBuilder<CategoriesDisplayCubit, CategoriesDisplayState>(
               builder: (context, state) {
                 if (state is CategoriesDisplayLoading) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const LoaddingAllCategoriesListView();
                 } else if (state is CategoriesDisplayLoaded) {
-                  return AllCategoriesListView(categoryList: state.categories,);
+                  return AllCategoriesListView(categoryList: state.categories);
                 }
                 return Container();
               },

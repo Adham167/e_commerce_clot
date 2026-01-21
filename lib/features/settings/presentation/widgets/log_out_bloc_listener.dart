@@ -46,7 +46,7 @@ class LogOutBlocListener extends StatelessWidget {
                   ],
                 ),
           );
-          Future.delayed(Duration(seconds: 3));
+          Future.delayed(const Duration(seconds: 3));
         }
 
         if (state is LogoutSuccess) {

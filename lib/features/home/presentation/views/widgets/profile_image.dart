@@ -14,11 +14,11 @@ class ProfileImage extends StatelessWidget {
       child: Container(
         height: 40,
         width: 40,
-        child: Icon(Icons.person, color: AppColors.primary),
         decoration: const BoxDecoration(
           color: AppColors.secondBackground,
           shape: BoxShape.circle,
         ),
+        child: Icon(Icons.person, color: AppColors.primary),
       ),
     );
   }

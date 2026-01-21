@@ -13,7 +13,6 @@ class OrderStatusModel {
   });
 
   factory OrderStatusModel.fromMap(Map<String, dynamic> map) {
-      print("🔥 OrderStatusModel.fromMap input: $map");
 
     return OrderStatusModel(
       title: map['title'] as String,

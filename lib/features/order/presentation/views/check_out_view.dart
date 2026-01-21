@@ -1,3 +1,4 @@
+import 'package:e_commerce_clot/core/utils/app_colors.dart';
 import 'package:e_commerce_clot/core/utils/app_router.dart';
 import 'package:e_commerce_clot/core/utils/app_style.dart';
 import 'package:e_commerce_clot/core/utils/functions/cart.dart';
@@ -54,19 +55,11 @@ class CheckOutView extends StatelessWidget {
                           children: [
                             Text(
                               '\$${Cart.calculateCartSubtotal(products)}',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
+                              style: AppStyle.styleBold16,
                             ),
                             const Text(
                               'Place Order',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 16,
-                              ),
+                              style: AppStyle.styleBold16,
                             ),
                           ],
                         ),
@@ -99,7 +92,13 @@ class CheckOutView extends StatelessWidget {
       controller: _addressCon,
       minLines: 2,
       maxLines: 4,
-      decoration: const InputDecoration(hintText: 'Shipping Address'),
+      autofocus: true,
+      style: AppStyle.styleMedium16,
+      cursorColor: AppColors.primary,
+      decoration: const InputDecoration(
+        hintText: 'Shipping Address',
+        hintStyle: AppStyle.styleMedium12,
+      ),
     );
   }
 }

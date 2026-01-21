@@ -71,7 +71,6 @@ class OrderFirebaseServiceImpl implements OrderFirebaseService {
           .doc(user!.uid)
           .collection("Orders")
           .add(order.toMap());
-
       for (var item in order.products) {
         await FirebaseFirestore.instance
             .collection("Users")

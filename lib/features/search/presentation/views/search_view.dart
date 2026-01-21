@@ -22,15 +22,11 @@ class SearchView extends StatelessWidget {
         body: BlocBuilder<ProductDisplayCubit, ProductDisplayState>(
           builder: (context, state) {
             if (state is ProductDisplayLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return const LoaddingProductsGridView();
             } else if (state is ProductDisplayLoaded) {
               return state.productEntity.isEmpty
                   ? const NotFoundWidget()
-                  : Column(
-                    children: [
-                      ProductsGridView(productList: state.productEntity),
-                    ],
-                  );
+                  : ProductsGridView(productList: state.productEntity);
             }
             return Container();
           },

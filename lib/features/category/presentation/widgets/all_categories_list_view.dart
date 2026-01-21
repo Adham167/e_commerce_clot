@@ -18,3 +18,17 @@ class AllCategoriesListView extends StatelessWidget {
     );
   }
 }
+
+class LoaddingAllCategoriesListView extends StatelessWidget {
+  const LoaddingAllCategoriesListView({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView.separated(
+        itemBuilder: (context, index) => const LoaddingAllCategoriesItem(),
+        separatorBuilder: (context, index) => const SizedBox(),
+        itemCount: 10,
+      ),
+    );
+  }
+}

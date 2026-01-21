@@ -1,5 +1,4 @@
 import 'package:e_commerce_clot/core/utils/app_colors.dart';
-import 'package:e_commerce_clot/core/utils/app_router.dart';
 import 'package:e_commerce_clot/core/utils/app_style.dart';
 import 'package:e_commerce_clot/core/utils/widgets/custom_app_bar.dart';
 import 'package:e_commerce_clot/features/settings/presentation/manager/logout_cubit/logout_cubit.dart';

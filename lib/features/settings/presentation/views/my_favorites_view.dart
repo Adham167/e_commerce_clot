@@ -1,4 +1,5 @@
 import 'package:e_commerce_clot/core/di/service_locator.dart';
+import 'package:e_commerce_clot/core/utils/app_style.dart';
 import 'package:e_commerce_clot/core/utils/widgets/custom_app_bar.dart';
 import 'package:e_commerce_clot/features/product/domain/usecases/get_favorites_products_usecase.dart';
 import 'package:e_commerce_clot/features/product/presentation/manager/product_display_cubit/product_display_cubit.dart';
@@ -12,9 +13,14 @@ class MyFavoritesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductDisplayCubit(usecase: getIt<GetFavoritesProductsUsecase>())..displayProducts(),
-      child: const Scaffold(
-        appBar: CustomAppBar(title: Text("My Favorites")),
+      create:
+          (context) =>
+              ProductDisplayCubit(usecase: getIt<GetFavoritesProductsUsecase>())
+                ..displayProducts(),
+      child:const Scaffold(
+        appBar: CustomAppBar(
+          title: Text("My Favorites", style: AppStyle.styleBold24),
+        ),
         body: MyFavoritesBody(),
       ),
     );

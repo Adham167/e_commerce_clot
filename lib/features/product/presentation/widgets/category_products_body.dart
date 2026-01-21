@@ -19,11 +19,11 @@ class CategoryProductsBody extends StatelessWidget {
             usecase: getIt<GetProductsByCategoryIdUsecase>(),
           )..displayProducts(params: categoryEntity.categoryId),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 4.0),
         child: BlocBuilder<ProductDisplayCubit, ProductDisplayState>(
           builder: (context, state) {
             if (state is ProductDisplayLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return const LoaddingProductsGridView();
             } else if (state is ProductDisplayLoaded) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +34,9 @@ class CategoryProductsBody extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
 
-                  ProductsGridView(productList: state.productEntity),
+                  Expanded(
+                    child: ProductsGridView(productList: state.productEntity),
+                  ),
                 ],
               );
             }

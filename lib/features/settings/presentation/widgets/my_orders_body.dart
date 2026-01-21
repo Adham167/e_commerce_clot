@@ -1,3 +1,5 @@
+import 'package:e_commerce_clot/core/utils/widgets/empty_widget.dart';
+import 'package:e_commerce_clot/features/product/presentation/views/products_grid_view.dart';
 import 'package:e_commerce_clot/features/settings/presentation/manager/order_display_cubit/order_display_cubit.dart';
 import 'package:e_commerce_clot/features/settings/presentation/widgets/my_orders_list_view.dart';
 import 'package:flutter/material.dart';
@@ -9,22 +11,18 @@ class MyOrdersBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        children: [
-          BlocBuilder<OrderDisplayCubit, OrderDisplayState>(
-            builder: (context, state) {
-              if (state is OrderDisplayLoaded) {
-                return MyOrdersListView(orders: state.orders);
-              } else if (state is OrderDisplayLoading) {
-                return const Center(child: CircularProgressIndicator());
-              } else if (state is OrderDisplayFailure) {
-                return const Center(child: Text("Please try again"));
-              }
-              return Container();
-            },
-          ),
-        ],
+      padding: const EdgeInsets.symmetric(horizontal: 0.0),
+      child: BlocBuilder<OrderDisplayCubit, OrderDisplayState>(
+        builder: (context, state) {
+          if (state is OrderDisplayLoaded) {
+            return state.orders.isEmpty? const EmptyWidget() :MyOrdersListView(orders: state.orders);
+          } else if (state is OrderDisplayLoading) {
+            return const LoaddingProductsGridView();
+          } else if (state is OrderDisplayFailure) {
+            return const Center(child: Text("Please try again"));
+          }
+          return Container();
+        },
       ),
     );
   }
