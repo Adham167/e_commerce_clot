@@ -12,6 +12,7 @@ class SearchWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextField(
+        cursorColor: AppColors.primary,
         style: AppStyle.styleMedium16,
         autofocus: true,
         onChanged: (data) {

@@ -56,7 +56,7 @@ class ProductOrderedCard extends StatelessWidget {
                       Text(
                         productOrderedEntity.productTitle,
                         overflow: TextOverflow.ellipsis,
-                        style: AppStyle.styleBold16,
+                        style: AppStyle.styleMedium12,
                       ),
                       Row(
                         children: [
@@ -120,7 +120,7 @@ class ProductOrderedCard extends StatelessWidget {
                         height: 23,
                         width: 23,
                         decoration: const BoxDecoration(
-                          color: Color(0xffFF8383),
+                          color: AppColors.primary,
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(Icons.remove, size: 15),
@@ -137,7 +137,6 @@ class ProductOrderedCard extends StatelessWidget {
 
 class LoaddingProductOrderedCard extends StatelessWidget {
   const LoaddingProductOrderedCard({super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -248,8 +247,6 @@ class LoaddingProductOrderedCard extends StatelessWidget {
                     ),
                   ),
                 ),
-
-                
               ],
             ),
           ),

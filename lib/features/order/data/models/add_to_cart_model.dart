@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 class AddToCartModel {
   final String productId;
   final String productTitle;
@@ -22,7 +20,6 @@ class AddToCartModel {
     required this.productImage,
     required this.createdDate,
   });
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'productId': productId,

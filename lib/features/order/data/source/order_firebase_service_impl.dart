@@ -60,6 +60,7 @@ class OrderFirebaseServiceImpl implements OrderFirebaseService {
       return const Left("Please try agian.");
     }
   }
+ 
 
   @override
   Future<Either> orderRegistration(OrderRegistrationModel order) async {
@@ -101,4 +102,6 @@ class OrderFirebaseServiceImpl implements OrderFirebaseService {
       return const Left("Please try again");
     }
   }
+
+  
 }

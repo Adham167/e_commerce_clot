@@ -18,7 +18,7 @@ class ProfileImage extends StatelessWidget {
           color: AppColors.secondBackground,
           shape: BoxShape.circle,
         ),
-        child: Icon(Icons.person, color: AppColors.primary),
+        child: const Icon(Icons.person, color: AppColors.primary),
       ),
     );
   }

@@ -112,7 +112,7 @@ class StatusWidget extends StatelessWidget {
                     .toDate()
                     .toString()
                     .split(' ')[0],
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 12,
                   color: AppColors.textSecondary,
                 ),
@@ -134,7 +134,7 @@ class ItemsWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Order Items',
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -169,7 +169,7 @@ class ItemsWidget extends StatelessWidget {
                     const SizedBox(width: 16),
                     Text(
                       '${orederEntity.products.length} Items',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 15,
                         color: AppColors.textPrimary,
                       ),
@@ -202,7 +202,7 @@ class ShippingWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Shipping details',
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -221,7 +221,7 @@ class ShippingWidget extends StatelessWidget {
           ),
           child: Text(
             orederEntity.shippingAddress,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 14,
               height: 1.6,
               color: AppColors.textSecondary,

@@ -50,7 +50,7 @@ class LogOutBlocListener extends StatelessWidget {
         }
 
         if (state is LogoutSuccess) {
-          GoRouter.of(context).pushReplacement(AppRouter.KLoginView);
+          GoRouter.of(context).pushReplacement(AppRouter.kLoginView);
         }
       },
       child: const SettingsBody(),

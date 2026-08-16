@@ -29,7 +29,7 @@ class OrderModel {
       createdDate: map['createdDate'] as String,
       shippingAddress: map['shippingAddress'] as String,
       itemCount: map['itemCount'] as int,
-      totalPrice: map['totalPrice'] as double,
+      totalPrice: (map['totalPrice'] as num).toDouble(),
       code: map['code'] as String,
       orderStatus: List<OrderStatusModel>.from(
         map['orderStatus'].map((e) => OrderStatusModel.fromMap(e)),

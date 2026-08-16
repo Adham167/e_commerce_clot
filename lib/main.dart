@@ -5,14 +5,19 @@ import 'package:e_commerce_clot/features/spalsh/presentation/manager/splash_cubi
 import 'package:e_commerce_clot/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';  
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await ServiceLocator();
+   
+  // runApp(
+  //   DevicePreview(
+  //     enabled: !kReleaseMode,
+  //     builder: (context) => const ECommerceClot(),
+  //   ),
+  // );
   runApp(const ECommerceClot());
 }
 
@@ -26,6 +31,9 @@ class ECommerceClot extends StatelessWidget {
       child: MaterialApp.router(
         theme: AppTheme.appTheme,
         debugShowCheckedModeBanner: false,
+        // useInheritedMediaQuery: true,
+        // locale: DevicePreview.locale(context),
+        // builder: DevicePreview.appBuilder,
         routerConfig: AppRouter.router,
       ),
     );

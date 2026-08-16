@@ -26,7 +26,7 @@ class ResetBody extends StatelessWidget {
             const SizedBox(height: 24),
             CustomButton(
               onPressed: () {
-                GoRouter.of(context).pushReplacement(AppRouter.KLoginView);
+                GoRouter.of(context).pushReplacement(AppRouter.kLoginView);
               },
               title: "Return to Login",
               width: 160,

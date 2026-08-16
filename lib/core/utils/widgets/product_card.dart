@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_clot/core/utils/app_colors.dart';
 import 'package:e_commerce_clot/core/utils/app_router.dart';
 import 'package:e_commerce_clot/core/utils/app_style.dart';
@@ -28,19 +29,37 @@ class ProductCard extends StatelessWidget {
           children: [
             Expanded(
               flex: 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(productEntity.images[0]),
-                  ),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(8),
-                    topRight: Radius.circular(8),
-                  ),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(8),
+                  topRight: Radius.circular(8),
+                ),
+                child: CachedNetworkImage(
+                  imageUrl: productEntity.images[0],
+                  fit: BoxFit.cover,
+                  placeholder:
+                      (context, url) => Container(color: Colors.grey.shade200),
+
+                  fadeInDuration: const Duration(milliseconds: 200),
+
+                  memCacheWidth: 400,
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
+              // Container(
+              //   decoration: BoxDecoration(
+              //     color: Colors.white,
+
+              //     image: DecorationImage(
+              //       fit: BoxFit.cover,
+              //       image: NetworkImage(productEntity.images[0]),
+              //     ),
+              //     borderRadius: const BorderRadius.only(
+              //       topLeft: Radius.circular(8),
+              //       topRight: Radius.circular(8),
+              //     ),
+              //   ),
+              // ),
             ),
             Expanded(
               flex: 1,

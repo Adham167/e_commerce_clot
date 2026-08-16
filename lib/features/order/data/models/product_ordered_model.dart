@@ -1,4 +1,3 @@
-
 import 'package:e_commerce_clot/features/order/domain/entities/product_ordered_entity.dart';
 
 class ProductOrderedModel {
@@ -12,7 +11,6 @@ class ProductOrderedModel {
   final String productImage;
   final String createdDate;
   final String id;
-
 
   ProductOrderedModel({
     required this.productId,
@@ -34,8 +32,8 @@ class ProductOrderedModel {
       productQuantity: map['productQuantity'] as int,
       productColor: map['productColor'] as String,
       productSize: map['productSize'] as String,
-      productPrice: map['productPrice'] as double,
-      totalPrice: map['totalPrice'] as double,
+      productPrice: (map['totalPrice'] as num).toDouble(),
+      totalPrice: (map['totalPrice'] as num).toDouble(),
       productImage: map['productImage'] as String,
       createdDate: map['createdDate'] as String,
       id: map['id'] as String,
@@ -56,7 +54,6 @@ class ProductOrderedModel {
       'id': id,
     };
   }
-
 }
 
 extension ProductOrderedXModel on ProductOrderedModel {
@@ -75,6 +72,7 @@ extension ProductOrderedXModel on ProductOrderedModel {
     );
   }
 }
+
 extension ProductOrderedXEntity on ProductOrderedEntity {
   ProductOrderedModel fromEntity() {
     return ProductOrderedModel(

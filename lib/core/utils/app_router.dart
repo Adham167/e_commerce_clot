@@ -25,9 +25,9 @@ import 'package:e_commerce_clot/features/spalsh/presentation/views/splash_view.d
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
-  static const KLoginView = "/LoginView";
-  static const KSignupView = "/SignupView";
-  static const KForgotPassword = "/ForgotPassword";
+  static const kLoginView = "/LoginView";
+  static const kSignupView = "/SignupView";
+  static const kForgotPassword = "/ForgotPassword";
   static const kGenderAndAgeView = "/GenderAndAgeView";
   static const kResetPasswordView = "/ResetPasswordView";
   static const kHomeView = "/HomeView";
@@ -47,7 +47,7 @@ abstract class AppRouter {
   static final router = GoRouter(
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SplashView()),
-      GoRoute(path: KLoginView, builder: (context, state) => const LoginView()),
+      GoRoute(path: kLoginView, builder: (context, state) => const LoginView()),
       GoRoute(path: kCartView, builder: (context, state) => const CartView()),
       GoRoute(
         path: kOrderPlacedView,
@@ -122,11 +122,11 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
-        path: KSignupView,
+        path: kSignupView,
         builder: (context, state) => const SignUpView(),
       ),
       GoRoute(
-        path: KForgotPassword,
+        path: kForgotPassword,
         builder: (context, state) => const ForgotPasswordView(),
       ),
     ],

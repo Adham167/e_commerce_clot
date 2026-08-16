@@ -12,9 +12,9 @@ class GenderButtonsWidget extends StatelessWidget {
       builder: (context, state) {
         return const Row(
           children: [
-            GenderTile(index: 1, gender: "Men"),
+            GenderTile(index: 0, gender: "Men"),
             SizedBox(width: 20),
-            GenderTile(index: 2, gender: "Women"),
+            GenderTile(index: 1, gender: "Women"),
           ],
         );
       },

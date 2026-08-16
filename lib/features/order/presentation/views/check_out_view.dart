@@ -12,10 +12,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class CheckOutView extends StatelessWidget {
+class CheckOutView extends StatefulWidget {
   final List<ProductOrderedEntity> products;
-  CheckOutView({required this.products, super.key});
+  const CheckOutView({required this.products, super.key});
 
+  @override
+  State<CheckOutView> createState() => _CheckOutViewState();
+}
+
+class _CheckOutViewState extends State<CheckOutView> {
   final TextEditingController _addressCon = TextEditingController();
 
   @override
@@ -54,7 +59,7 @@ class CheckOutView extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '\$${Cart.calculateCartSubtotal(products)}',
+                              '\$${Cart.calculateCartSubtotal(widget.products)}',
                               style: AppStyle.styleBold16,
                             ),
                             const Text(
@@ -68,10 +73,12 @@ class CheckOutView extends StatelessWidget {
                         BlocProvider.of<ButtonCubit>(context).execute(
                           usecase: OrderRegistrationUsecase(),
                           params: OrderRegistrationModel(
-                            products: products,
+                            products: widget.products,
                             createdDate: DateTime.now().toString(),
-                            itemCount: products.length,
-                            totalPrice: Cart.calculateCartSubtotal(products),
+                            itemCount: widget.products.length,
+                            totalPrice: Cart.calculateCartSubtotal(
+                              widget.products,
+                            ),
                             shippingAddress: _addressCon.text,
                           ),
                         );

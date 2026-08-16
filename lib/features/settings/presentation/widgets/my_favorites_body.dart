@@ -10,26 +10,21 @@ class MyFavoritesBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0.0),
-      child: BlocBuilder<ProductDisplayCubit, ProductDisplayState>(
-        builder: (context, state) {
-          if (state is ProductDisplayLoaded) {
-            return state.productEntity.isEmpty
-                ? const EmptyWidget()
-                : Expanded(
-                  child: ProductsGridView(productList: state.productEntity),
-                );
-          } else if (state is ProductDisplayLoading) {
-            return const Expanded(child: LoaddingProductsGridView());
-          } else if (state is ProductDisplayFailure) {
-            return const Center(
-              child: Text("Please try again", style: AppStyle.styleBold24),
-            );
-          }
-          return Container();
-        },
-      ),
+    return BlocBuilder<ProductDisplayCubit, ProductDisplayState>(
+      builder: (context, state) {
+        if (state is ProductDisplayLoaded) {
+          return state.productEntity.isEmpty
+              ? const EmptyWidget()
+              : ProductsGridView(productList: state.productEntity);
+        } else if (state is ProductDisplayLoading) {
+          return const LoaddingProductsGridView();
+        } else if (state is ProductDisplayFailure) {
+          return const Center(
+            child: Text("Please try again", style: AppStyle.styleBold24),
+          );
+        }
+        return Container();
+      },
     );
   }
 }

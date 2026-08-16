@@ -31,7 +31,7 @@ class CartProductsCubit extends Cubit<CartProductsState> {
     var returnedData = await getIt<RemoveCartProductUsecases>().call(
       params: product.id,
     );
-
+ 
     returnedData.fold(
       (error) {
         emit(CartProductsFailure(errMessage: error));

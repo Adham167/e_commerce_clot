@@ -9,6 +9,7 @@ import 'package:e_commerce_clot/features/authintication/domain/usecases/log_out_
 import 'package:e_commerce_clot/features/authintication/domain/usecases/send_password_reset_email_usecase.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/signin_usecase.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/signup_usecase.dart';
+import 'package:e_commerce_clot/features/authintication/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:e_commerce_clot/features/category/data/repo/category_repo_impl.dart';
 import 'package:e_commerce_clot/features/category/data/source/category_firebase_service_impl.dart';
 import 'package:e_commerce_clot/features/category/domain/repo/category_firebase_service.dart';
@@ -87,4 +88,8 @@ Future<void> ServiceLocator() async {
   );
   getIt.registerSingleton<GetOrdersUsecase>(GetOrdersUsecase());
   getIt.registerSingleton<LogOutUsecase>(LogOutUsecase());
+
+  //cubits
+
+  getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<SigninUsecase>()));
 }

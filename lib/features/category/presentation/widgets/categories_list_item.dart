@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_clot/core/utils/app_colors.dart';
 import 'package:e_commerce_clot/core/utils/app_style.dart';
 import 'package:e_commerce_clot/features/category/domain/entities/category_entity.dart';
@@ -11,16 +12,13 @@ class CategoriesListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: 60,
-          width: 60,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.fill,
-              image: NetworkImage(categoryEntity.image),
-            ),
-            shape: BoxShape.circle,
-            color: Colors.white,
+        ClipOval(
+          child: CachedNetworkImage(
+            imageUrl: categoryEntity.image,
+            height: 60,
+            width: 60,
+            fit: BoxFit.cover,
+            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
         ),
 

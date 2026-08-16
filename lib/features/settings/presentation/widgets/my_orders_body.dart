@@ -9,22 +9,19 @@ class MyOrdersBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0.0),
-      child: BlocBuilder<OrderDisplayCubit, OrderDisplayState>(
-        builder: (context, state) {
-          if (state is OrderDisplayLoaded) {
-            return state.orders.isEmpty
-                ? const EmptyWidget()
-                : Expanded(child: MyOrdersListView(orders: state.orders));
-          } else if (state is OrderDisplayLoading) {
-            return const Expanded(child: LoaddingMyOrdersListView());
-          } else if (state is OrderDisplayFailure) {
-            return const Center(child: Text("Please try again"));
-          }
-          return Container();
-        },
-      ),
+    return BlocBuilder<OrderDisplayCubit, OrderDisplayState>(
+      builder: (context, state) {
+        if (state is OrderDisplayLoaded) {
+          return state.orders.isEmpty
+              ? const EmptyWidget()
+              : MyOrdersListView(orders: state.orders);
+        } else if (state is OrderDisplayLoading) {
+          return const LoaddingMyOrdersListView();
+        } else if (state is OrderDisplayFailure) {
+          return const Center(child: Text("Please try again"));
+        }
+        return Container();
+      },
     );
   }
 }
