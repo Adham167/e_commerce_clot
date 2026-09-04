@@ -34,7 +34,11 @@ class CustomActionButton extends StatelessWidget {
                   color: Colors.white,
                 ),
               )
-              : (content ?? Text(title, style: AppStyle.styleMedium16)),
+              : (content ??
+                  Text(
+                    title,
+                    style: AppStyle.styleBold16.copyWith(color: Colors.white),
+                  )),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:e_commerce_clot/core/entities/user_entity.dart';
+import 'package:e_commerce_clot/features/authintication/domain/entities/user_entity.dart';
 import 'package:e_commerce_clot/features/home/presentation/manager/user_info_display_cubit/user_info_display_cubit.dart';
 import 'package:e_commerce_clot/features/home/presentation/views/widgets/cart_widget.dart';
 import 'package:e_commerce_clot/features/home/presentation/views/widgets/gender_widget.dart';

@@ -1,60 +1,61 @@
+
 import 'dart:convert';
-import 'package:e_commerce_clot/core/entities/user_entity.dart';
+
+import 'package:e_commerce_clot/features/authintication/domain/entities/user_entity.dart';
 
 class UserDataModel {
-  final String userId;
-  final String firstName;
-  final String lastName;
+  final String id;
+  final String fullName;
+  final String phone;
   final String email;
-  final String image;
   final int gender;
 
   UserDataModel({
-    required this.userId,
-    required this.firstName,
-    required this.lastName,
+    required this.id,
+    required this.fullName,
+    required this.phone,
     required this.email,
-    required this.image,
     required this.gender,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'userId': userId,
-      'firstname': firstName,
-      'lastname': lastName,
+      'id': id,
+      'fullName': fullName,
+      'phone': phone,
       'email': email,
-      'image': image,
       'gender': gender,
     };
   }
 
   factory UserDataModel.fromMap(Map<String, dynamic> map) {
     return UserDataModel(
-      userId: map['userId'] ?? "",
-      firstName: map['firstname'] as String,
-      lastName: map['lastname'] as String,
+      id: map['id'] as String,
+      fullName: map['fullName'] as String,
+      phone: map['phone'] as String,
       email: map['email'] as String,
-      image: map['image'] ?? '',
       gender: map['gender'] as int,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-    factory UserDataModel.fromJson(String source) => UserDataModel.fromMap(json.decode(source) as Map<String, dynamic>);
-
+  factory UserDataModel.fromJson(String source) {
+    return UserDataModel.fromMap(
+      json.decode(source) as Map<String, dynamic>,
+    );
+  }
 }
 
 extension UserXModel on UserDataModel {
   UserEntity toEntity() {
     return UserEntity(
-      userId: userId,
-      firstName: firstName,
-      lastName: lastName,
+      id: id,
+      fullName: fullName,
+      phone: phone,
       email: email,
-      image: image,
       gender: gender,
     );
   }
 }
+

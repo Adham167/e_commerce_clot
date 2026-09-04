@@ -16,9 +16,17 @@ class SplashView extends StatelessWidget {
       body: BlocListener<SplashCubit, SplashState>(
         listener: (context, state) {
           if (state is UnAuthenticated) {
-            GoRouter.of(context).pushReplacement(AppRouter.kLoginView);
+            GoRouter.of(context).pushReplacement(
+              AppRouter.kLoginView,
+            );
+          } else if (state is EmailNotVerified) {
+            GoRouter.of(context).pushReplacement(
+              AppRouter.kEmailVerificationView,
+            );
           } else if (state is Authenticated) {
-            GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
+            GoRouter.of(context).pushReplacement(
+              AppRouter.kHomeView,
+            );
           }
         },
         child: const SplashBody(),

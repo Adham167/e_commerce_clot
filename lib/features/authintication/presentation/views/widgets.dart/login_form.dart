@@ -1,4 +1,5 @@
 import 'package:e_commerce_clot/core/utils/app_router.dart';
+import 'package:e_commerce_clot/core/utils/app_validators.dart';
 import 'package:e_commerce_clot/core/utils/widgets/custom_text_field.dart';
 import 'package:e_commerce_clot/features/authintication/data/models/user_signin_model.dart';
 import 'package:e_commerce_clot/features/authintication/presentation/manager/login_cubit/login_cubit.dart';
@@ -17,11 +18,10 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  
+
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
-  
-  // Focus Nodes للتنقل السلس في الكيبورد
+
   late final FocusNode _emailFocusNode;
   late final FocusNode _passwordFocusNode;
 
@@ -45,7 +45,7 @@ class _LoginFormState extends State<LoginForm> {
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
-      final user = UserSigninModel(
+      final user = UserSigninEntity(
         email: _emailController.text.trim(),
         password: _passwordController.text,
       );
@@ -59,7 +59,6 @@ class _LoginFormState extends State<LoginForm> {
       key: _formKey,
       child: Column(
         children: [
-          // 1. Email Field مع الانتقال التلقائي للـ Focus التالي
           CustomTextfield(
             text: "Enter Email",
             controller: _emailController,
@@ -68,18 +67,19 @@ class _LoginFormState extends State<LoginForm> {
             onFieldSubmitted: (_) {
               FocusScope.of(context).requestFocus(_passwordFocusNode);
             },
+            validator: AppValidators.validateEmail,
           ),
 
           const SizedBox(height: 16),
 
-          // 2. Password Field مع خيار التنفيذ مباشرة عند الضغط على Done
           CustomTextfield(
             text: "Enter Password",
             controller: _passwordController,
             focusNode: _passwordFocusNode,
-            isPassword: true, // لتفعيل إخفاء وإظهار الباسورد
+            isPassword: true,
             textInputAction: TextInputAction.done,
             onFieldSubmitted: (_) => _submitForm(),
+            validator: AppValidators.validatePasswordLogin,
           ),
 
           const SizedBox(height: 8),
@@ -97,7 +97,6 @@ class _LoginFormState extends State<LoginForm> {
 
           const SizedBox(height: 20),
 
-          // 3. Inline Loading داخل الزرار مباشرة بدون Popup Dialog
           BlocBuilder<LoginCubit, LoginState>(
             builder: (context, state) {
               return CustomActionButton(

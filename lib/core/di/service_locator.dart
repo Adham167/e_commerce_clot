@@ -2,6 +2,8 @@ import 'package:e_commerce_clot/features/authintication/domain/repo/user_auth_re
 import 'package:e_commerce_clot/features/authintication/data/repo/user_auth_repo_impl.dart';
 import 'package:e_commerce_clot/features/authintication/domain/repo/auth_firebase_service.dart';
 import 'package:e_commerce_clot/features/authintication/data/source/auth_firebase_service_impl.dart';
+import 'package:e_commerce_clot/features/authintication/domain/usecases/check_email_verification_usecase.dart';
+import 'package:e_commerce_clot/features/authintication/domain/usecases/email_verification_usecase.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/get_ages_usecase.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/get_user_usecase.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/is_logged_in_usecase.dart';
@@ -9,7 +11,10 @@ import 'package:e_commerce_clot/features/authintication/domain/usecases/log_out_
 import 'package:e_commerce_clot/features/authintication/domain/usecases/send_password_reset_email_usecase.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/signin_usecase.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/signup_usecase.dart';
+import 'package:e_commerce_clot/features/authintication/presentation/manager/email_verification_cubit/email_verification_cubit.dart';
+import 'package:e_commerce_clot/features/authintication/presentation/manager/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:e_commerce_clot/features/authintication/presentation/manager/login_cubit/login_cubit.dart';
+import 'package:e_commerce_clot/features/authintication/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
 import 'package:e_commerce_clot/features/category/data/repo/category_repo_impl.dart';
 import 'package:e_commerce_clot/features/category/data/source/category_firebase_service_impl.dart';
 import 'package:e_commerce_clot/features/category/domain/repo/category_firebase_service.dart';
@@ -56,8 +61,12 @@ Future<void> ServiceLocator() async {
   getIt.registerSingleton<OrderRepo>(OrderRepoImpl());
   //usecases
 
-  getIt.registerSingleton<SignupUsecase>(SignupUsecase());
+  getIt.registerSingleton<SignUpUsecase>(SignUpUsecase());
   getIt.registerSingleton<SigninUsecase>(SigninUsecase());
+  getIt.registerSingleton<CheckEmailVerificationUsecase>(
+    CheckEmailVerificationUsecase(),
+  );
+  getIt.registerSingleton<EmailVerificationUsecase>(EmailVerificationUsecase());
   getIt.registerSingleton<GetAgesUsecase>(GetAgesUsecase());
   getIt.registerSingleton<SendPasswordResetEmailUsecase>(
     SendPasswordResetEmailUsecase(),
@@ -92,4 +101,14 @@ Future<void> ServiceLocator() async {
   //cubits
 
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<SigninUsecase>()));
+  getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt<SignUpUsecase>()));
+  getIt.registerFactory<EmailVerificationCubit>(
+    () => EmailVerificationCubit(
+      getIt<EmailVerificationUsecase>(),
+      getIt<CheckEmailVerificationUsecase>(),
+    ),
+  );
+  getIt.registerFactory<ForgotPasswordCubit>(
+    () => ForgotPasswordCubit(getIt<SendPasswordResetEmailUsecase>()),
+  );
 }

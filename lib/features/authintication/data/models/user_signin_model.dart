@@ -1,6 +1,6 @@
-class UserSigninModel {
+class UserSigninEntity {
   final String email;
   final String password;
 
-  UserSigninModel({required this.email, required this.password});
+  UserSigninEntity({required this.email, required this.password});
 }

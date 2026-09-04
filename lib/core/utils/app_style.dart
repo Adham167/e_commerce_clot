@@ -44,6 +44,12 @@ class AppStyle {
     fontFamily: "CircularStd",
     fontWeight: FontWeight.w500,
   );
+  static const styleMedium14 = TextStyle(
+    color: Color(0xFF1F2937),
+    fontSize: 14,
+    fontFamily: "CircularStd",
+    fontWeight: FontWeight.w500,
+  );
 
   static const styleMedium12 = TextStyle(
     color: Color(0xFF6B7280),
@@ -56,6 +62,12 @@ class AppStyle {
   static const styleRegular12 = TextStyle(
     color: Color(0xFF6B7280),
     fontSize: 12,
+    fontFamily: "CircularStd",
+    fontWeight: FontWeight.w400,
+  );
+  static const styleRegular16 = TextStyle(
+    color: Color(0xFF6B7280),
+    fontSize: 16,
     fontFamily: "CircularStd",
     fontWeight: FontWeight.w400,
   );

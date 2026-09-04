@@ -5,14 +5,18 @@ import 'package:e_commerce_clot/features/authintication/domain/usecases/signin_u
 import 'package:meta/meta.dart';
 
 part 'login_state.dart';
-
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.signinUsecase) : super(LoginInitial());
+
   final SigninUsecase signinUsecase;
-  Future<void> login(UserSigninModel params) async {
+
+  Future<void> login(UserSigninEntity params) async {
     emit(LoginLoading());
+
     try {
-      Either returnedData = await signinUsecase.call(params: params);
+      Either returnedData =
+          await signinUsecase.call(params: params);
+
       returnedData.fold(
         (message) {
           emit(LoginFailure(errMessage: message));

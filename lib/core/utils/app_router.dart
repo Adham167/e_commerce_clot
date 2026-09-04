@@ -1,6 +1,5 @@
-import 'package:e_commerce_clot/features/authintication/data/models/user_model.dart';
+import 'package:e_commerce_clot/features/authintication/presentation/views/email_verification_view.dart';
 import 'package:e_commerce_clot/features/authintication/presentation/views/forgot_password_view.dart';
-import 'package:e_commerce_clot/features/authintication/presentation/views/gender_and_age_view.dart';
 import 'package:e_commerce_clot/features/authintication/presentation/views/login_view.dart';
 import 'package:e_commerce_clot/features/authintication/presentation/views/reset_password_view.dart';
 import 'package:e_commerce_clot/features/authintication/presentation/views/sign_up_view.dart';
@@ -43,12 +42,17 @@ abstract class AppRouter {
   static const kMyOrdersView = "/MyOrdersView";
   static const kOrderDetailsView = "/OrderDetailsView";
   static const kOrderItemsView = "/OrderItemsView";
+  static const kEmailVerificationView = "/EmailVerificationView";
 
   static final router = GoRouter(
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SplashView()),
       GoRoute(path: kLoginView, builder: (context, state) => const LoginView()),
       GoRoute(path: kCartView, builder: (context, state) => const CartView()),
+      GoRoute(
+        path: kEmailVerificationView,
+        builder: (context, state) => const EmailVerificationView(),
+      ),
       GoRoute(
         path: kOrderPlacedView,
         builder: (context, state) => const OrderPlacedView(),
@@ -100,13 +104,13 @@ abstract class AppRouter {
         },
       ),
 
-      GoRoute(
-        path: kGenderAndAgeView,
-        builder: (context, state) {
-          final user = state.extra as UserModel;
-          return GenderAndAgeView(userModel: user);
-        },
-      ),
+      // GoRoute(
+      //   path: kGenderAndAgeView,
+      //   builder: (context, state) {
+      //     final user = state.extra as UserModel;
+      //     return GenderAndAgeView(userModel: user);
+      //   },
+      // ),
       GoRoute(
         path: kCheckOutView,
         builder: (context, state) {

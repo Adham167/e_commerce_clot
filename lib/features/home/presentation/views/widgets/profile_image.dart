@@ -1,4 +1,4 @@
-import 'package:e_commerce_clot/core/entities/user_entity.dart';
+import 'package:e_commerce_clot/features/authintication/domain/entities/user_entity.dart';
 import 'package:e_commerce_clot/core/utils/app_colors.dart';
 import 'package:e_commerce_clot/core/utils/app_router.dart';
 import 'package:flutter/material.dart';

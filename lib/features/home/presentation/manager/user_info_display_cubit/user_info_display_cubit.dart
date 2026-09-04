@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce_clot/core/di/service_locator.dart';
-import 'package:e_commerce_clot/core/entities/user_entity.dart';
+import 'package:e_commerce_clot/features/authintication/domain/entities/user_entity.dart';
 import 'package:e_commerce_clot/features/authintication/domain/usecases/get_user_usecase.dart';
 import 'package:meta/meta.dart';
 
